@@ -1,10 +1,22 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React,{Component} from 'react';
+import {Text, View} from 'react-native';
+import {connect} from 'react-redux';
 
-const HomeScreen = ( )=>{
-    return(
-        <Text>HOME</Text>
-    )
+
+class HomeScreen extends Component {
+    render()
+    {
+        return(
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>HOME</Text>
+            </View>
+        )
+    } 
 }
 
-export default HomeScreen;
+const mapStateToProps = state =>{
+    console.log(state);
+    return {};
+}
+
+export default connect(mapStateToProps)(HomeScreen);
