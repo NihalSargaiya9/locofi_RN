@@ -1,67 +1,37 @@
-import React,{Component} from 'react';
-import {Text,View,StyleSheet,Alert, BackHandler} from 'react-native';
-import Geolocation from '@react-native-community/geolocation';
+// In App.js in a new project
 
-import {CardSection,Card,Button} from './components/common';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-class App extends Component{
-	state = {
-		initialPosition: 'unknown',
-		lastPosition: 'unknown',
-	  };
-	
-	  
-	componentDidMount() {
-
-	  }
-	getGeoLocation()
-	{
-		Geolocation.getCurrentPosition(
-			position => {
-			  const initialPosition = JSON.stringify(position);
-			  this.setState({initialPosition});
-			},
-			error => Alert.alert('Error', JSON.stringify(error)),
-			{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
-		  );
-		  this.watchID = Geolocation.watchPosition(position => {
-			const lastPosition = JSON.stringify(position);
-			this.setState({lastPosition});
-		  });
-	}
-
-	render()
-	{
-
-		return(
-				<View>
-					<CardSection style={{}}>
-						<Card style={{flex:1}}> 
-							<Text>
-							<Text style={styles.title}>Initial position: </Text>
-							{this.state.initialPosition}
-							</Text>
-							<Text>
-							<Text style={styles.title}>Current position: </Text>
-							{this.state.lastPosition}
-							</Text>
-
-						<Button onPress={this.getGeoLocation.bind(this)} >Load Location</Button>
-						</Card>
-						
-							
-						
-					</CardSection>			
-				</View>
-			);
-	}
+import {Provider} from 'react-redux';
+import {createStore,applyMiddleware} from 'redux';
+import ReduxThunk from 'redux-thunk';
+import reducers from './reducers';
 
 
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
 }
-const styles = StyleSheet.create({
-	title: {
-	  fontWeight: '600',
-	},
-  });
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
+		<NavigationContainer>
+		<Stack.Navigator>
+			<Stack.Screen name="Home" component={HomeScreen} />
+		</Stack.Navigator>
+		</NavigationContainer>
+	</Provider>
+  );
+}
 
 export default App;
