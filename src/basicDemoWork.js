@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
-import {Text,View,StyleSheet,Alert, BackHandler} from 'react-native';
+import {Text,View,StyleSheet,Alert, BackHandler, PermissionsAndroid} from 'react-native';
 import {Provider} from 'react-redux';
 import {createStore,applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Geolocation from '@react-native-community/geolocation';
 import reducers from './reducers';
-// import {createStackNavigator, createAppContainer} from 'react-navigation';
-
+import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 
 import {CardSection,Card,Button} from './components/common';
+
 
 
 
@@ -17,10 +17,68 @@ class App extends Component{
 	state = {
 		initialPosition: 'unknown',
 		lastPosition: 'unknown',
-	  };
-	
+	};
+	componentDidMount(){
+		// try {
+		//   const granted =PermissionsAndroid.request(
+		// 	PermissionsAndroid.PERMISSIONS.CAMERA,
+		// 	{
+		// 	  title: 'Cool Photo App Camera Permission',
+		// 	  message:
+		// 		'Cool Photo App needs access to your camera ' +
+		// 		'so you can take awesome pictures.',
+		// 	  buttonNeutral: 'Ask Me Later',
+		// 	  buttonNegative: 'Cancel',
+		// 	  buttonPositive: 'OK',
+		// 	},
+		//   );
+		//   if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+		// 	  console.log('You can use the camera');
+		// 	  console.log('You can use the camera');
+		// 	} else {
+		// 		console.log('You NOOO');
+		// 	}
+		// } catch (err) {
+		// 	console.warn(err);
+		// }
+		RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({interval: 10000, fastInterval: 5000})
+		.then(data => {
+		  alert(data);
+		}).catch(err => {
+		  // The user has not accepted to enable the location services or something went wrong during the process
+		  // "err" : { "code" : "ERR00|ERR01|ERR02", "message" : "message"}
+		  // codes : 
+		  //  - ERR00 : The user has clicked on Cancel button in the popup
+		  //  - ERR01 : If the Settings change are unavailable
+		  //  - ERR02 : If the popup has failed to open
+		  alert("Error " + err.message + ", Code : " + err.code);
+		});
+
+
+			// try{
+			//   const granted = PermissionsAndroid.request(
+			// 	PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+			// 	{
+			// 	  title: 'Location Permission',
+			// 	  message: 'You must to accept this to make it work.'
+			// 	}
+			//   )
+			//   if(granted === PermissionsAndroid.RESULTS.GRANTED){
+			// 	console.log('Location permission accepted.')
+			//   }else{
+			// 	console.log("Location permission denied")
+			//   }
+			// } catch (err) {
+			//   console.warn(err)
+			// }
+			
+
+
+	}
 	getGeoLocation()
 	{
+
+
 		Geolocation.getCurrentPosition(
 			position => {
 			  const initialPosition = JSON.stringify(position);
