@@ -66,7 +66,7 @@ class App extends Component{
 			//   if(granted === PermissionsAndroid.RESULTS.GRANTED){
 			// 	console.log('Location permission accepted.')
 			//   }else{
-			// 	console.log("Location permission denied")
+			// 	console.log("Location permission denied here")
 			//   }
 			// } catch (err) {
 			//   console.warn(err)
@@ -77,24 +77,51 @@ class App extends Component{
 	}
 	getGeoLocation()
 	{
+		try{
+
+			  if(PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA)){
 
 
-		Geolocation.getCurrentPosition(
-			position => {
-			  const initialPosition = JSON.stringify(position);
-			  this.setState({initialPosition});
-			},
-			error => Alert.alert('Error', JSON.stringify(error)),
-			{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
-		  );
-		  this.watchID = Geolocation.watchPosition(position => {
-			const lastPosition = JSON.stringify(position);
-			this.setState({lastPosition});
-		  });
-	}
+				console.log('Location permission accepted.')
+				Geolocation.getCurrentPosition(
+					position => {
+						const initialPosition = JSON.stringify(position);
+				this.setState({initialPosition});
+				},
+				error => Alert.alert('Error', JSON.stringify(error)),
+				{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+				);
+				this.watchID = Geolocation.watchPosition(position => {
+					const lastPosition = JSON.stringify(position);
+				this.setState({lastPosition});
 
-	render()
-	{
+			});
+		
+			}
+			else{
+				console.log("Location permission denied")
+			  }
+			} catch (err) {
+			  console.warn(err)
+			}
+
+
+			// 	Geolocation.getCurrentPosition(
+			// 		position => {
+			// 			const initialPosition = JSON.stringify(position);
+			// 	this.setState({initialPosition});
+			// 	},
+			// 	error => Alert.alert('Error', JSON.stringify(error)),
+			// 	{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+			// 	);
+			// 	this.watchID = Geolocation.watchPosition(position => {
+			// 		const lastPosition = JSON.stringify(position);
+			// 	this.setState({lastPosition});
+			// });
+		}
+		
+		render()
+		{
 
 		return(
 
