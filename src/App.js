@@ -11,6 +11,7 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 
 import HomeScreen from './components/HomeScreen';
+import Note from './components/Note';
 
 
 // function HomeScreen() {
@@ -27,8 +28,11 @@ function App() {
   return (
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
-		<Stack.Navigator>
+		<Stack.Navigator initialRouteName="Home">
 			<Stack.Screen name="Home" component={HomeScreen} />
+			<Stack.Screen name="Note" component={Note}
+			options={({ route }) => ({ title: route.params.xxx })}
+			 />
 		</Stack.Navigator>
 		</NavigationContainer>
 	</Provider>

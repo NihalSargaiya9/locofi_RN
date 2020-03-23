@@ -14,7 +14,9 @@ const Card =  (params)=>{
 
 const styles = {
 	containerStyle:{
-		padding:5,
+		padding:20,
+		paddingLeft:10,
+		paddingRight:10,
 		borderRadius:2,
 		backgroundColor:"#DCDCDC",
 		borderColor:'#ddd',
