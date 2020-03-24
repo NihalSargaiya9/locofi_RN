@@ -1,24 +1,25 @@
 import React from 'react';
-import {TextInput,View,Text} from 'react-native';
+import {TextInput,Image,View,Text} from 'react-native';
 
-const Input = ({label,value,onChangeText,placeholder,secureTextEntry})=>{
-	const {labelStyle,containerStyle,textStyle} =styles;
+const Input = ({value,onChangeText,placeholder,secureTextEntry, imageUrl, style})=>{
+	// const {labelStyle,containerStyle,textStyle} =styles;
 	return (
-		<View style={containerStyle}>	
-			<Text   style={labelStyle}> {label} </Text>
-			<TextInput placeholder={placeholder} secureTextEntry={secureTextEntry} autoCorrect={false} style={textStyle} value={value}	onChangeText={onChangeText} />
+		<View style={[ styles.containerStyle , style.containerStyle ]}>	
+		<Image style={{width:30,height:30, marginLeft:14,marginBottom:5}} source={{uri: imageUrl}} />
+			
+			<TextInput placeholder={placeholder} 
+					   secureTextEntry={secureTextEntry} 
+					   autoCorrect={false} 
+					   style={[styles.inputStyle,style.inputStyle]} 
+					   value={value}	
+					   onChangeText={onChangeText} />
 		</View>	
 		);
 }
 
 
 const styles={
-	labelStyle:{
-		fontSize:18,
-		paddingLeft:20,
-		flex:1
-
-	},
+	
 	containerStyle:{
 		height:40,
 		flex:1,
@@ -27,6 +28,8 @@ const styles={
 	},
 	textStyle:{
 		color:'#000',
+		marginLeft:50,
+		padding:5,
 		paddingLeft:5,
 		paddingRight:5,
 		fontSize:18,
