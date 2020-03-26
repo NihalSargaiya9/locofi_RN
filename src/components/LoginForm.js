@@ -52,7 +52,7 @@ class LoginForm extends Component {
 							/>
 					</CardSection>
 
-						<Button style={styles.buttonContainerStyle} 
+						<Button buttonStyle={styles.buttonContainerStyle.buttonStyle} textStyle={styles.buttonContainerStyle.textStyle} 
 						onPress={()=>this.onClickListener('login')}>
 						Log In
 					 	</Button>
