@@ -1,7 +1,6 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -12,6 +11,8 @@ import reducers from './reducers';
 
 import HomeScreen from './components/HomeScreen';
 import Note from './components/Note';
+import LoginForm from './components/LoginForm';
+import DateTimePicker from './components/common/DateTimePicker';
 
 
 // function HomeScreen() {
@@ -28,10 +29,19 @@ function App() {
   return (
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
-		<Stack.Navigator initialRouteName="Home">
+		<Stack.Navigator initialRouteName="Note"
+		//  screenOptions={{
+		// headerShown: false
+		//   }}
+		>
 			<Stack.Screen name="Home" component={HomeScreen} />
+			<Stack.Screen name="Login" component={LoginForm} 
+			 screenOptions={{
+				header: null
+			  }}
+			/>
 			<Stack.Screen name="Note" component={Note}
-			options={({ route }) => ({ title: route.params.xxx })}
+			options={({ route }) => ({ title: "NOTE" })}
 			 />
 		</Stack.Navigator>
 		</NavigationContainer>
