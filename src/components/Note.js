@@ -31,9 +31,17 @@ class Note extends Component{
     render()
     {
 
-
+        this.props.navigation.setOptions({
+            headerRight: () => (
+                <View style={{flexDirection:"row",width:150}}>
+                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800'}}>Save</Button>
+                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}} textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
+                </View>
+      ),
+            headerTitle: props => <TextInput style={{fontSize:16}} placeholder="Meeting With"/>,
+        });
         
-        console.log(this.props);
+        
         return(
         <View>
             <CardSection>
@@ -64,7 +72,6 @@ class Note extends Component{
                 </Card>
                 <Card style={{flexDirection:"row"}}>
                     <DateTimePicker />
-                    <Button style={{flex:3}} buttonStyle={style.buttonStyle}>SAVE</Button>
                     {/* DATE TIME  */}
                     {/* SAVE Button */}
                 </Card>
@@ -79,7 +86,7 @@ class Note extends Component{
     const style={
         buttonStyle:{
             backgroundColor:"#4bb543",
-            height:50
+            width:60
         }
     }
 

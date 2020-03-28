@@ -14,21 +14,13 @@ import Note from './components/Note';
 import LoginForm from './components/LoginForm';
 
 
-// function HomeScreen() {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//       <Text>Home Screen</Text>
-//     </View>
-//   );
-// }
-
 const Stack = createStackNavigator();
 
 function App() {
   return (
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
-		<Stack.Navigator initialRouteName="Login"
+		<Stack.Navigator initialRouteName="Note"
 		//  screenOptions={{
 		// headerShown: false
 		//   }}
@@ -36,16 +28,16 @@ function App() {
 			<Stack.Screen name="Home" component={HomeScreen} />
 			<Stack.Screen name="Login" component={LoginForm} 
 			 screenOptions={{
-				header: null
+				headerMode:'none'
 			  }}
 			/>
 			<Stack.Screen name="Note" component={Note}
-			options={({ route }) => ({ title: "NOTE" })}
+			options={({ navigation,route }) => ({ title: "NOTE" })}
 			 />
 		</Stack.Navigator>
 		</NavigationContainer>
 	</Provider>
   );
-}
+}  
 
 export default App;

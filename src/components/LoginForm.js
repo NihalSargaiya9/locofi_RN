@@ -122,7 +122,7 @@ class LoginForm extends Component {
 		}
 	render(){
 		// this.getGeoLocation();
-
+		    this.props.navigation.setOptions({headerShown:false,});
 		return(
 
 			<ScrollView contentContainerStyling={{ alignItems:'center',
