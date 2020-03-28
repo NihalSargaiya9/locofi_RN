@@ -12,7 +12,6 @@ import reducers from './reducers';
 import HomeScreen from './components/HomeScreen';
 import Note from './components/Note';
 import LoginForm from './components/LoginForm';
-import DateTimePicker from './components/common/DateTimePicker';
 
 
 // function HomeScreen() {
@@ -29,7 +28,7 @@ function App() {
   return (
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
-		<Stack.Navigator initialRouteName="Note"
+		<Stack.Navigator initialRouteName="Login"
 		//  screenOptions={{
 		// headerShown: false
 		//   }}
