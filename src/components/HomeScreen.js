@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Text, View} from 'react-native';
 import {connect} from 'react-redux';
-
+import {listApointments} from '../actions';
 
 import Tile from './Tile';
 
@@ -21,9 +21,15 @@ class HomeScreen extends Component {
    
        }
 
+    componentDidMount()
+    {
+        this.props.listApointments();
+    }
+
 
     render()
     {
+        console.log(this.props);
         return(
             <View style={{flex:1}}>
                 <Tile navigation={this.props.navigation}/>
@@ -33,8 +39,8 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state =>{
-    console.log(state);
-    return {};
+    const appointments = state.HomeScreen;
+    return {appointments};
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps,{listApointments})(HomeScreen);

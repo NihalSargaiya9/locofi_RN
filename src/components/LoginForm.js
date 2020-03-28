@@ -1,9 +1,74 @@
 import React, { Component }from 'react';
-import { Text, Dimensions,View, Alert, Image, ScrollView} from 'react-native';
+
+
+import Geolocation from '@react-native-community/geolocation';
+import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
+
+
+import { Text, Dimensions,View, Alert, Image, ScrollView,PermissionsAndroid} from 'react-native';
 import { Card, CardSection, Input ,Button, Spinner } from './common';
+import * as actions from '../actions';
+import {connect} from 'react-redux';
+
 
 class LoginForm extends Component {
-	
+
+	onEmailChange(text){
+		 this.props.emailChanged(text);
+	}
+	onPasswordChange(text){
+		 this.props.passwordChanged(text);
+	}
+	onButtonPress()
+	{
+		console.log("local");
+		const {email,password}= this.props;
+		console.log(this.props)
+		this.props.loginUser({email,password},this.props.navigation);
+	}
+	renderError()
+	{
+		if(this.props.error)
+			return(
+					<View style={{background:"#fff"}}>
+					<Text style={{color:'red',alignSelf:'center',fontSize:20}}>
+						{this.props.error}
+					</Text>
+					</View>
+				);
+	}
+
+    constructor(props){
+        super(props);
+           this.state={
+   
+            };
+         }
+     componentDidRecieveProps(nextProps,nextState){
+       this.setState({
+        NavTitle:nextProps["title"],
+         NavColor:nextProps["tintColor"]
+        });
+   
+       }
+
+     componentDidMount()
+     {
+		RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({interval: 10000, fastInterval: 5000})
+		.then(data => {
+		  alert(data);
+		}).catch(err => {
+		  // The user has not accepted to enable the location services or something went wrong during the process
+		  // "err" : { "code" : "ERR00|ERR01|ERR02", "message" : "message"}
+		  // codes : 
+		  //  - ERR00 : The user has clicked on Cancel button in the popup
+		  //  - ERR01 : If the Settings change are unavailable
+		  //  - ERR02 : If the popup has failed to open
+		  alert("Error " + err.message + ", Code : " + err.code);
+		});
+     }
+
+		
 	
 	state={ email: '', password: ''};
 
@@ -11,7 +76,53 @@ class LoginForm extends Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
+	getGeoLocation()
+	{
+		try{
+
+			  if(PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)){
+
+
+				console.log('Location permission accepted.')
+				Geolocation.getCurrentPosition(
+					position => {
+						const initialPosition = JSON.stringify(position);
+				this.setState({initialPosition});
+				},
+				error => Alert.alert('Error', JSON.stringify(error)),
+				{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+				);
+				this.watchID = Geolocation.watchPosition(position => {
+					const lastPosition = JSON.stringify(position);
+				this.setState({lastPosition});
+
+			});
+		
+			}
+			else{
+				console.log("Location permission denied")
+			  }
+			} catch (err) {
+			  console.warn(err)
+			}
+
+
+			// 	Geolocation.getCurrentPosition(
+			// 		position => {
+			// 			const initialPosition = JSON.stringify(position);
+			// 	this.setState({initialPosition});
+			// 	},
+			// 	error => Alert.alert('Error', JSON.stringify(error)),
+			// 	{enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+			// 	);
+			// 	this.watchID = Geolocation.watchPosition(position => {
+			// 		const lastPosition = JSON.stringify(position);
+			// 	this.setState({lastPosition});
+			// });
+		}
 	render(){
+		// this.getGeoLocation();
+
 		return(
 
 			<ScrollView contentContainerStyling={{ alignItems:'center',
@@ -36,7 +147,7 @@ class LoginForm extends Component {
 							imageUrl ="https://img.icons8.com/ultraviolet/40/000000/filled-message.png"
 							placeholder="Email" 
 							style={styles.inputContainerStyle}
-							onChangeText={ (text) => this.setState({email: text})}
+							onChangeText={this.onEmailChange.bind(this)}
 							value={this.props.email}
 							/>
 					</CardSection>
@@ -47,13 +158,13 @@ class LoginForm extends Component {
 							imageUrl = "https://img.icons8.com/ultraviolet/40/000000/key.png"
 							placeholder="password"
 							style={styles.inputContainerStyle}
-							onChangeText={ (password) => this.setState({password})}
+							onChangeText={ this.onPasswordChange.bind(this)}
 							value={this.props.password}
 							/>
 					</CardSection>
 
 						<Button buttonStyle={styles.buttonContainerStyle.buttonStyle} textStyle={styles.buttonContainerStyle.textStyle} 
-						onPress={()=>this.onClickListener('login')}>
+						onPress={this.onButtonPress.bind(this)}>
 						Log In
 					 	</Button>
 						
@@ -153,5 +264,13 @@ const styles = {
 }
 };
 
-export default LoginForm;
-			
+const mapStateToProps = state =>{
+	return {
+		email:state.auth.email,
+		password:state.auth.password,
+		error:state.auth.error,
+		loading:state.auth.loading
+	};
+};
+
+export default connect(mapStateToProps,actions)(LoginForm);

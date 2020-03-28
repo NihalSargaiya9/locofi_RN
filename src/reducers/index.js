@@ -1,6 +1,9 @@
 import {combineReducers} from 'redux';
-
+import DashboardReducer from './DashboardReducer';
+import AuthReducer from './AuthReducer';
 export default combineReducers({
 
-    HomeScreen:()=>[]
+
+	auth : AuthReducer,
+    HomeScreen:DashboardReducer
 });
