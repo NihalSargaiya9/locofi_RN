@@ -11,3 +11,5 @@ export const LOGOUT_USER = 'logout_user';
 
 export const EMPLOYEE_UPDATE = 'employee_update';
 export const Dashboard = "show Dashboard";
+
+export const BASE = "https://locofi.pythonanywhere.com/"
