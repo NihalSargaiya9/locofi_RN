@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Button, Platform,Text} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
  
-const App = () => {
+const App = ({style}) => {
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -27,7 +27,7 @@ const App = () => {
   };
  
   return (
-    <View style={{flexDirection:"row",flex:1}}>
+    <View style={[{flexDirection:"row"},style]}>
       <View style={{flex:2}}>
         <Button onPress={showDatepicker} title="Show date picker!" />
       </View>
@@ -45,6 +45,7 @@ const App = () => {
           onChange={onChange}
         />
       )}
+      <Text style={{width:50,flex:2}}>{toString(date.date)}</Text>
     </View>
   );
 };
