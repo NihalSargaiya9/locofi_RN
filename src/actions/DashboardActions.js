@@ -6,12 +6,6 @@ export const listApointments=()=>
 {
 
 	return(dispatch)=>{
-		dispatch(
-			{
-				type:Dashboard,
-				payload:"ABIDATA NI AAYA"
-			}
-		)
 	axios.get(BASE+'appointments').then(function success(resp) {
 		dispatch({type:Dashboard,payload:resp.data});
 	}).catch(function error(err) {

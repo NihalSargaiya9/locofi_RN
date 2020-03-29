@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import {Text,View,StyleSheet,Image,TouchableOpacity} from 'react-native';
+
 import {CardSection, Card} from './common';
+import Moment from 'moment';
+
 
 class  Tile extends Component{
     constructor(props){
@@ -14,7 +17,6 @@ class  Tile extends Component{
         NavTitle:nextProps["title"],
          NavColor:nextProps["tintColor"]
         });
-        
         this.navigation = this.props.navigation;
        }
 
@@ -23,6 +25,7 @@ class  Tile extends Component{
         // this.setState({color:'red'});
     }
     render(){
+        console.log("THIS IS FROM TILE ",this.props);
         return(
             <View>
                 <CardSection>
@@ -33,13 +36,13 @@ class  Tile extends Component{
                     >
                             <Card style={{flexDirection:'row'}} >
                                 <View style={{flex:7}}>
-                                    <Text style={styles.appointmentTime}>12:00<Text style={{fontSize:16}}> PM</Text></Text>
-                                    <Text style={styles.location}><Image source={require('./../images/pin.png')}  style={{width:12,height:12,marginRight:5,margin:0,padding:0}} /> 353 Bajrang Nagar Indore </Text>
+                                    <Text style={styles.appointmentTime}>{Moment(this.props.appointment.item[5]).format("HH:MM")}<Text style={{fontSize:16}}> {Moment(this.props.appointment.item[5]).format("A")}</Text></Text>
+                                    <Text style={styles.location}><Image source={require('./../images/pin.png')}  style={{width:12,height:12,marginRight:5,margin:0,padding:0}} /> {this.props.appointment.item[3]}</Text>
                                 </View>
                                 <View style={{flex:6}}>
-                                    <Text style={styles.meetingTo}> <Image source={require('./../images/user.png')}  style={{width:12,height:12,padding:3,marginRight:5}} /> Mr.Nihal Sargaiya</Text>
+                                    <Text style={styles.meetingTo}> <Image source={require('./../images/user.png')}  style={{width:12,height:12,padding:3,marginRight:5}} /> {this.props.appointment.item[4]}</Text>
                                 </View>
-                                <Text style={styles.lastUpdated}><Image source={require('./../images/clock.png')}  style={{width:9,height:9,padding:3,marginRight:5}} /> 20 mins ago</Text>
+                                <Text style={styles.lastUpdated}><Image source={require('./../images/clock.png')}  style={{width:9,height:9,padding:3,marginRight:5}} /> {Moment(this.props.appointment.item[5]).fromNow()}</Text>
                             </Card>
                     </TouchableOpacity>  
                 </CardSection>
