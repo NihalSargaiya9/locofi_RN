@@ -1,6 +1,6 @@
 import {Dashboard} from "./types";
 import axios from 'axios';
-
+import {BASE} from './types';
 
 export const listApointments=()=>
 {
@@ -12,7 +12,7 @@ export const listApointments=()=>
 				payload:"ABIDATA NI AAYA"
 			}
 		)
-	axios.get('http://locofi.pythonanywhere.com/').then(function success(resp) {
+	axios.get(BASE+'appointments').then(function success(resp) {
 		dispatch({type:Dashboard,payload:resp.data});
 	}).catch(function error(err) {
 		console.log(err);

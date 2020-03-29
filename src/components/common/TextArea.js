@@ -6,7 +6,7 @@ const TextArea=(params)=>{
         return(
               <TextInput
               KeyboardAvoidingView 
-                    style={[{borderColor: 'gray', borderWidth: 1,height:410,padding:2,margin:2 },params.style]}
+                    style={[{borderColor: 'gray', borderWidth: 1,height:490,padding:2,margin:2 },params.style]}
                     multiline
                     editable
                     textAlign={'justify'} 
