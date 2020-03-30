@@ -12,11 +12,11 @@ export const listApointments=()=>
 				payload:"ABIDATA NI AAYA"
 			}
 		)
-	axios.get('http://locofi.pythonanywhere.com/').then(function success(resp) {
-		dispatch({type:Dashboard,payload:resp.data});
-	}).catch(function error(err) {
-		console.log(err);
-	});
+	// axios.get('http://locofi.pythonanywhere.com/').then(function success(resp) {
+	// 	dispatch({type:Dashboard,payload:resp.data});
+	// }).catch(function error(err) {
+	// 	console.log(err);
+	// });
 
 	}
 }

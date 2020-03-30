@@ -14,9 +14,10 @@ export default(state=INITIAL_STATE,action)=>{
 			return{...state,loading:true,error:''}
 
 		case LOGIN_USER_SUCCESS:
+			console.log('IN AUTH REDUCER WITH PAYLOAD')
 			return {...state,...INITIAL_STATE,user:action.payload}
 		case LOGIN_USER_FAIL:
-			return {...state,error:"Authentication Fail",password:'',loading:false}
+			return {...state,error:"Authentication Failed",password:'',loading:false}
 		case LOGOUT_USER:
 			return INITIAL_STATE;
 		default:
