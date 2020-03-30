@@ -6,6 +6,7 @@ const TextArea=({style, onChangeText, value} )=>{
         return(
               <TextInput
               KeyboardAvoidingView 
+
                     style={[{borderColor: 'gray', borderWidth: 1,height:410,padding:2,margin:2 },style]}
                     multiline
                     editable

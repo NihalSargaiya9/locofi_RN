@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {View, Button, Platform,Text} from 'react-native';
+import {View, Platform,Text,TouchableOpacity} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
- 
+ import Moment from 'moment';
+ import {Button} from './Button';
+
 const App = ({style}) => {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
  
@@ -25,15 +27,11 @@ const App = ({style}) => {
   const showTimepicker = () => {
     showMode('time');
   };
+  Moment.locale('en');
  
   return (
     <View style={[{flexDirection:"row"},style]}>
-      <View style={{flex:2}}>
-        <Button onPress={showDatepicker} title="Show date picker!" />
-      </View>
-      <View style={{flex:2}}>
-        <Button onPress={showTimepicker} title="Show time picker!" />
-      </View>
+      
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
@@ -45,7 +43,9 @@ const App = ({style}) => {
           onChange={onChange}
         />
       )}
-      <Text style={{width:50,flex:2}}>{toString(date.date)}</Text>
+      <Button buttonStyle={{flex:1}} textStyle={{fontSize:16}}> {Moment(date).format('DD/MM  h:m A')} </Button>
+    <View>
+    </View>
     </View>
   );
 };
