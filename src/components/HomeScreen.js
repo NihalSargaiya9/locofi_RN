@@ -4,6 +4,21 @@ import {connect} from 'react-redux';
 import {listApointments} from '../actions';
 import _ from 'lodash';
 
+import BackgroundTask from 'react-native-background-task'
+
+import { LocalNotification } from '../services/LocalPushController'
+
+import {Button} from './common/'
+
+  BackgroundTask.define(async() => {
+        console.log('Hello from a background task slos')
+    this._interval = setInterval(()=>{
+        console.log('Hello from a background task')
+        BackgroundTask.finish()
+      },2000)
+  })
+
+
 import Tile from './Tile';
 
 class HomeScreen extends Component {
@@ -25,7 +40,20 @@ class HomeScreen extends Component {
     componentDidMount()
     {
         this.props.listApointments();
+          BackgroundTask.schedule({
+                period:900,
+               });
+            console.log("elsdaj");
+            this.checkStatus();
+
     }
+
+
+       async checkStatus() {
+        const status = await BackgroundTask.statusAsync()
+        console.log(status.available)
+      }
+
 
     renderListItem(appointment)
     {
@@ -62,6 +90,8 @@ class HomeScreen extends Component {
             <View style={{flex:1}}>
 
             {this.showList()}
+
+            <Button onPress={()=>LocalNotification("IT PARK","MR. Gates")}>show noti</Button>
             </View>
         )
     } 
@@ -69,9 +99,7 @@ class HomeScreen extends Component {
 
 const mapStateToProps = state =>{
     const appointments = state.HomeScreen;
-    // const appointments = _.map(state.HomeScreen,(val)=>{
-    //     return {...val}
-    // });
+
     return {appointments};
 }
 
