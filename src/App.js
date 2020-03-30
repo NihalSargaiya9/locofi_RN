@@ -20,7 +20,9 @@ function App() {
   return (
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
-		<Stack.Navigator initialRouteName="Home"
+
+		<Stack.Navigator initialRouteName="Login"
+
 		//  screenOptions={{
 		// headerShown: false
 		//   }}

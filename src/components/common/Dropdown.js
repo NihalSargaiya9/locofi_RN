@@ -9,10 +9,14 @@ class Dropdown extends Component{
            this.state={
               NavTitle:"",
              NavColor:"",
-             language:"java"
+             locationId:''
+             // language:"java"
    
             };
          }
+
+
+
      componentDidRecieveProps(nextProps,nextState){
        this.setState({
         NavTitle:nextProps["title"],
@@ -28,11 +32,9 @@ class Dropdown extends Component{
 
         return(
             <Picker
-            selectedValue={this.state.language}
+            selectedValue={this.props.selectedValue}
             style={[{height:50,width:100},this.props.style]}
-            onValueChange={(itemValue, itemIndex) =>
-                this.setState({language: itemValue})
-            }>
+            onValueChange={this.props.onValueChange}>
             {this.props.children}
         </Picker>
             );
