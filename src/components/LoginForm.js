@@ -70,7 +70,7 @@ class LoginForm extends Component {
 
 		
 	
-	state={ email: '', password: ''};
+	// state={ email: '', password: ''};
 
   	onClickListener = (viewId) => {
     Alert.alert("Alert", "Button pressed "+viewId);
@@ -167,6 +167,7 @@ class LoginForm extends Component {
 						onPress={this.onButtonPress.bind(this)}>
 						Log In
 					 	</Button>
+					 	{this.renderError()}
 						
 
 				</View>

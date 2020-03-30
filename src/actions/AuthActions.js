@@ -1,4 +1,7 @@
-import {EMAIL_CHANGED,PASSWORD_CHANGED,LOGIN_USER_SUCCESS,LOGIN_USER_FAIL,LOGIN_USER,LOGOUT_USER} from './types';
+import {EMAIL_CHANGED,PASSWORD_CHANGED,LOGIN_USER_SUCCESS,LOGIN_USER_FAIL,LOGIN_USER,LOGOUT_USER, BASE} from './types';
+import axios from 'axios';
+// import requests
+// import json;
 // import firebase from 'firebase';
 // import {Actions} from 'react-native-router-flux';
 
@@ -17,11 +20,24 @@ export const passwordChanged = (text)=>{
 };
 
 export const loginUser=({email,password},navigation)=>
-{
+{  
 	return(dispatch)=>{
 		console.log("iam here in login user")
 		
-		loginUserSuccess(dispatch,navigation)
+		axios.get(BASE+'login',{params:{email:email,password:password}})
+			.then( user=>{ user.data
+						console.log(user.data)
+						if (user.data){loginUserSuccess(dispatch,user,navigation)}
+							else{loginUserFail(dispatch)}})
+					
+				.catch(()=> loginUserFail(dispatch));
+
+
+				// console.log(res['user'])
+
+		
+
+		// loginUserSuccess(dispatch,navigation)
 		
 
 		// dispatch({type:loginUserSuccess})
@@ -54,13 +70,13 @@ export const logoutUser =()=>
 
 
 
-const loginUserSuccess=(dispatch,navigation)=>
+const loginUserSuccess=(dispatch,user,navigation)=>
 {
-	// dispatch({
-	// 	type:LOGIN_USER_SUCCESS,
-	// 	payload:user
-	// });
-	console.log("CLICKED",navigation);
+	console.log("CLICKED",user.data);
+	dispatch({
+		type:LOGIN_USER_SUCCESS,
+		payload:user
+	});
 	navigation.navigate("Home");
 };
 

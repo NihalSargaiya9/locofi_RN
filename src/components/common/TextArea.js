@@ -1,17 +1,17 @@
 import React from 'react';
 import {View,Text,TextInput } from 'react-native';
 
-const TextArea=(params)=>{
-    const [value, onChangeText] = React.useState('Useless Multiline Placeholder');
+const TextArea=({style, onChangeText, value} )=>{
+    // const [value, onChangeText] = 'Type Note';
         return(
               <TextInput
               KeyboardAvoidingView 
-                    style={[{borderColor: 'gray', borderWidth: 1,height:410,padding:2,margin:2 },params.style]}
+                    style={[{borderColor: 'gray', borderWidth: 1,height:410,padding:2,margin:2 },style]}
                     multiline
                     editable
                     textAlign={'justify'} 
                     numberOfLines={55}
-                    onChangeText={text => onChangeText(text)}
+                    onChangeText={onChangeText}
                     value={value}
                     blurOnSubmit={false}
                     allowFontScaling
