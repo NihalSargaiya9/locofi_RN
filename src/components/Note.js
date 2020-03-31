@@ -1,10 +1,10 @@
-import React,{Component} from 'react';
+import React,{Component,useState} from 'react';
 import {View, Text, Picker, TextInput, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 
 import {CardSection,Card,TextArea,Dropdown,Button} from './common/';
-import DateTimePicker from './common/DateTimePicker';
+import DateTimePicker from './common/DateTimePickerRX';
 
 
 class Note extends Component{
@@ -16,6 +16,10 @@ class Note extends Component{
     onMeetingChange(text){
         console.log('meeeting')
         this.props.meetingChanged(text);
+    }
+    onDateTimeChange(text){
+        console.log('Date Changed')
+        this.props.dateTimeChanged("hello")
     }
     onNoteChange(text){
         console.log('meeeting')
@@ -73,7 +77,7 @@ class Note extends Component{
                     </Dropdown>
                     {/* TExt imput are here  */}
 
-                    <DateTimePicker style={{flex:2}}/>
+                    <DateTimePicker onButtonPress={this.onDateTimeChange.bind(this)} style={{flex:2}}/>
                 </Card>
                 <Card>
                  <TextArea style={{backgroundColor:"#f6f8fa",padding:2}}

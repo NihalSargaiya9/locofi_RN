@@ -15,5 +15,9 @@ export const Dashboard = "show Dashboard";
 export const LOCATION_CHANGED ='location_changed';
 export const MEETING_CHANGED = 'meeting_changed';
 export const NOTE_CHANGED = 'note_changed';
+export const DATETIME_CHANGED = 'datetime_changed';
+
+
+
 
 export const BASE = "https://locofi.pythonanywhere.com/"
