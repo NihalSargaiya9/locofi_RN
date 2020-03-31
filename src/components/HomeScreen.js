@@ -92,6 +92,7 @@ class HomeScreen extends Component {
             {this.showList()}
 
             <Button onPress={()=>LocalNotification("IT PARK","MR. Gates")}>show noti</Button>
+            <Button buttonStyle={{borderRadius:100,backgroundColor:"#444",width:60,right:20,position:'absolute',bottom:30}} textStyle={{fontSize:30,color:"#fff"}}>+</Button>
             </View>
         )
     } 

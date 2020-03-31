@@ -1,4 +1,4 @@
-import { LOCATION_CHANGED, MEETING_CHANGED ,NOTE_CHANGED} from './types';
+import { LOCATION_CHANGED, MEETING_CHANGED ,NOTE_CHANGED,DATETIME_CHANGED} from './types';
 
 export const locationChanged = (value) => {
     return{
@@ -19,6 +19,14 @@ export const noteChanged = (text) =>{
 	return{
 
 		type: NOTE_CHANGED,
+		payload: text
+	}
+};
+
+export const dateTimeChanged = (text) =>{
+	return{
+
+		type: DATETIME_CHANGED,
 		payload: text
 	}
 };
