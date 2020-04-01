@@ -3,40 +3,43 @@ import {Text,View,StyleSheet,Image,TouchableOpacity} from 'react-native';
 
 import {CardSection, Card} from './common';
 import Moment from 'moment';
+import * as actions from '../actions';
+import {connect} from 'react-redux';
+
+
 
 
 class  Tile extends Component{
     constructor(props){
         super(props);
-           this.state={
-   
-            };
+
          }
      componentDidRecieveProps(nextProps,nextState){
        this.setState({
         NavTitle:nextProps["title"],
          NavColor:nextProps["tintColor"]
         });
-        this.navigation = this.props.navigation;
        }
 
-    do()
+
+    loadValuesLocal ()
     {
+        this.props.loadValues(this.props.appointment.item);
         // this.setState({color:'red'});
     }
     render(){
-        console.log("THIS IS FROM TILE ",this.props);
+        console.log("from TIle ", this.props.appointment.item)
         return(
             <View>
                 <CardSection>
                     <TouchableOpacity
-                     onPress={() => {console.log(this.props.navigation);this.props.navigation.navigate('Note',{xxx:"YOUR NOTE"})}}
-                     onLongPress={this.do.bind(this)}
+                     onPress={this.loadValuesLocal.bind(this)}
+                     onLongPress={()=>{}}
                     delayLongPress={100}
                     >
                             <Card style={{flexDirection:'row'}} >
                                 <View style={{flex:7}}>
-                                    <Text style={styles.appointmentTime}>{Moment(this.props.appointment.item[5]).format("HH:MM")}<Text style={{fontSize:16}}> {Moment(this.props.appointment.item[5]).format("A")}</Text></Text>
+                                    <Text style={styles.appointmentTime}>{Moment(this.props.appointment.item[6]).format("HH:MM")}<Text style={{fontSize:16}}> {Moment(this.props.appointment.item[6]).format("A")}</Text></Text>
                                     <Text style={styles.location}><Image source={require('./../images/pin.png')}  style={{width:12,height:12,marginRight:5,margin:0,padding:0}} /> {this.props.appointment.item[3]}</Text>
                                 </View>
                                 <View style={{flex:6}}>
@@ -74,4 +77,5 @@ const styles=StyleSheet.create({
     }
 });
 
-export default Tile
+
+export default connect(null,actions)(Tile);

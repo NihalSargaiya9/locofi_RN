@@ -3,7 +3,7 @@ import {View, Text, Picker, TextInput, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../actions'
 
-import {CardSection,Card,TextArea,Dropdown,Button} from './common/';
+import {CardSection,Card,TextArea,Button} from './common/';
 import DateTimePicker from './common/DateTimePickerRX';
 
 
@@ -25,6 +25,11 @@ class Note extends Component{
         console.log('meeeting')
         this.props.noteChanged(text);
     }
+    updateDetails()
+    {
+        const {location,meeting,note,datetime,sno,note_id}=this.props;
+        this.props.updateDetails(location,meeting,note,datetime,sno,note_id)
+    }
     constructor(props){
         super(props);
            this.state={
@@ -39,26 +44,31 @@ class Note extends Component{
    
        }
 
-       state={ email: '', password: ''};
 
-       onClickListener = (viewId) => {
-     Alert.alert("Alert", "Button pressed "+viewId);
-   }
-    componentDidMount(){
-            console.log(this.props);
-}
+           state={ email: '', password: ''};
+
+           onClickListener = (viewId) => {
+         Alert.alert("Alert", "Button pressed "+viewId);
+       }
+
+    componentWillUnmount()
+    {
+        this.props.listApointments();
+    }
+     
     render()
     {
+        console.log(this.props)
 
         this.props.navigation.setOptions({
             headerRight: () => (
                 <View style={{flexDirection:"row",width:150}}>
-                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' }}>Save</Button>
+                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
                     <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}} textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
                 </View>
       ),
             headerTitle: props => <TextInput style={{fontSize:16}} placeholder="Meeting With"
-                                            onChangeText={this.onMeetingChange.bind(this)}/>,
+                                         value={this.props.meeting}   onChangeText={this.onMeetingChange.bind(this)}/>,
         });
         
         
@@ -67,21 +77,21 @@ class Note extends Component{
         <View>
             <CardSection>
                <Card style={{padding:0,margin:0,height:50,flexDirection:"row"}}>
-                    <Dropdown style={{width:80,flex:2}}
-                                selectedValue={this.props.location}
-                                onValueChange={this.onLocationChange.bind(this)}
+                    <Picker
+                        selectedValue={this.props.location}
+                        style={[{height:50,width:100},{width:80,flex:2}]}
+                        onValueChange={this.onLocationChange.bind(this)}>
 
-                                >
-                        <Picker.Item label="Location 1" value="1" />
-                        <Picker.Item label="Location 2" value="2" />
-                    </Dropdown>
+                        <Picker.Item label="AITR" value="1" />
+                        <Picker.Item label="Crystal It Park" value="2" />
+                    </Picker>
                     {/* TExt imput are here  */}
 
                     <DateTimePicker onButtonPress={this.onDateTimeChange.bind(this)} style={{flex:2}}/>
                 </Card>
                 <Card>
                  <TextArea style={{backgroundColor:"#f6f8fa",padding:2}}
-                            value={this.state.note}
+                            value={this.props.note}
                             onChangeText={this.onNoteChange.bind(this)}/>
                 </Card>
         </CardSection>
@@ -98,8 +108,8 @@ class Note extends Component{
         }
     }
 const mapStateToProps = state => {
-    const { location } = state.note;
-    return { location };
+    const { location,meeting,note,datetime,sno,note_id } = state.note;
+    return {  location,meeting,note,datetime,sno,note_id };
 };
 
 export default connect(mapStateToProps,actions)(Note);

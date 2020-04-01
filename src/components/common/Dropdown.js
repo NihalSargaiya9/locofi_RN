@@ -28,11 +28,10 @@ class Dropdown extends Component{
 
     render()
     {
-        console.log(this.props);
 
         return(
             <Picker
-            selectedValue={this.props.selectedValue}
+            selectedValue={this.props.value}
             style={[{height:50,width:100},this.props.style]}
             onValueChange={this.props.onValueChange}>
             {this.props.children}

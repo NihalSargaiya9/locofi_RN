@@ -8,30 +8,56 @@ import * as actions from '../../actions'
 
 class App extends Component{
 
-  async onButtonPressLocal()
+  onButtonPressLocal()
   {
     this.setState({mode:"date"});
-    let dateResp = new Promise((r,x)=>{
-      this.setState({show:true})
+    this.setState({clicks:1});
+//     let dateResp = new Promise((r,x)=>{
+    this.setState({show:true})
 
-    })
-    let res = await dateResp;
+//     })
+//     let res = await dateResp;
+// ??
 
-      this.setState({mode:"time"})
+      
+   }
+   componentDidMount()
+   {
+    console.log("I am from date ",this.props.datetime)
+
    }
   state = {
     show:false,
     mode:"date",
-    date:new Date()
+    date:new Date(this.props.datetime),
+    clicks:0
   }
   onChange=(event,selectedDate)=>
   {
+
     // date = Moment(selectedDate).utcOffset(330);
-    this.setState({date:selectedDate,mode:"time"})
-    this.props.dateTimeChanged(this.state.date)
+    if(event.type=="set")
+    {
+      this.setState({date:selectedDate,mode:"time"})
+      this.props.dateTimeChanged(this.state.date)
+    }
+    this.setState({mode:"time"})
+
+    this.setState({clicks:(this.state.clicks-1)})
+    // if(this.state.clicks==1)
+    // {
+    //   this.setState({mode:"time"})
+    // }
+
+    if(this.state.clicks==0)
+    {
+      this.setState({show:false})
+    console.log(this.state,event)
+      
+    }
+    console.log(this.state,event)
   }
 render(){
-  
   return (
     <View style={[{flexDirection:"row",flex:2}]}>
       {this.state.show &&
@@ -52,8 +78,8 @@ render(){
 }
 }
 const mapStateToProps = state => {
-    const { location } = state.note;
-    return { location };
+    const { datetime } = state.note;
+    return { datetime };
 };
  
 export default connect(mapStateToProps,actions)(App);

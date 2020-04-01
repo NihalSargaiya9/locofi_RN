@@ -22,12 +22,7 @@ function App() {
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
 
-		<Stack.Navigator initialRouteName="Home"
-
-		//  screenOptions={{
-		// headerShown: false
-		//   }}
-		>
+		<Stack.Navigator initialRouteName="Home"		>
 			<Stack.Screen name="Home" component={HomeScreen} />
 			<Stack.Screen name="Login" component={LoginForm} 
 			 screenOptions={{
@@ -41,7 +36,7 @@ function App() {
 			/>
 			<Stack.Screen name="Note" component={Note}
 			options={({ navigation,route }) => ({ title: "NOTE" })}
-			 />
+			 />		
 		</Stack.Navigator>
 		</NavigationContainer>
 	</Provider>
