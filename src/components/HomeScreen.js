@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {listApointments} from '../actions';
 import _ from 'lodash';
 
+import {NavigationEvents} from '@react-navigation/native';
 import BackgroundTask from 'react-native-background-task'
 
 import { LocalNotification } from '../services/LocalPushController'
@@ -13,9 +14,10 @@ import { LocalNotification } from '../services/LocalPushController'
 import {setNav} from './navigator'
 import {Button} from './common/'
 
-  BackgroundTask.define(async() => {
+  BackgroundTask.define(() => {
         console.log('Hello from a background task slos')
     this._interval = setInterval(()=>{
+        LocalNotification("IT PARK","MR. Gates")
         console.log('Hello from a background task')
         BackgroundTask.finish()
       },2000)
@@ -43,11 +45,10 @@ class HomeScreen extends Component {
     componentDidMount()
     {
         this.props.listApointments();
-            console.log("ddd");
           BackgroundTask.schedule({
+
                 period:900,
                });
-            console.log("elsdaj");
             this.checkStatus();
             setNav(this.props.navigation);
 
@@ -105,7 +106,6 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state =>{
-  console.log(state)
     const appointments = state.HomeScreen.data;
 
     return {appointments};

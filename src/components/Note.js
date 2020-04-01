@@ -78,7 +78,7 @@ class Note extends Component{
             <CardSection>
                <Card style={{padding:0,margin:0,height:50,flexDirection:"row"}}>
                     <Picker
-                        selectedValue={this.props.location}
+                        selectedValue={""+this.props.location}
                         style={[{height:50,width:100},{width:80,flex:2}]}
                         onValueChange={this.onLocationChange.bind(this)}>
 

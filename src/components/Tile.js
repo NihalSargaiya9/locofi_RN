@@ -28,7 +28,7 @@ class  Tile extends Component{
         // this.setState({color:'red'});
     }
     render(){
-        console.log("from TIle ", this.props.appointment.item)
+        // console.log("from TIle ", this.props.appointment.item)
         return(
             <View>
                 <CardSection>
