@@ -8,6 +8,9 @@ import BackgroundTask from 'react-native-background-task'
 
 import { LocalNotification } from '../services/LocalPushController'
 
+
+
+import {setNav} from './navigator'
 import {Button} from './common/'
 
   BackgroundTask.define(async() => {
@@ -40,11 +43,13 @@ class HomeScreen extends Component {
     componentDidMount()
     {
         this.props.listApointments();
+            console.log("ddd");
           BackgroundTask.schedule({
                 period:900,
                });
             console.log("elsdaj");
             this.checkStatus();
+            setNav(this.props.navigation);
 
     }
 
@@ -55,17 +60,18 @@ class HomeScreen extends Component {
       }
 
 
-    renderListItem(appointment)
+    renderListItem(appointment,navigation)
     {
-        console.log("i am single ",appointment)
-        return (<Tile appointment={appointment} />);
+        // console.log("i am single ",appointment)
+        return (<Tile navigation={navigation} appointment={appointment} />);
 
 
     }
 
+
     showList()
     {
-        console.log("*------------*",_.isEmpty(this.props.appointments))
+        // console.log("*------------*",_.isEmpty(this.props.appointments))
         if(_.isEmpty(this.props.appointments))
         {
             return(<Text>LOADING</Text>)
@@ -77,6 +83,7 @@ class HomeScreen extends Component {
                 data={this.props.appointments}
                 renderItem={this.renderListItem}
                 // keyExtractor={employee=>e.uid}
+
              />
             )
         }
@@ -85,7 +92,6 @@ class HomeScreen extends Component {
 
     render()
     {
-        console.log("form render ",this.props);
         return(
             <View style={{flex:1}}>
 
@@ -99,7 +105,8 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state =>{
-    const appointments = state.HomeScreen;
+  console.log(state)
+    const appointments = state.HomeScreen.data;
 
     return {appointments};
 }

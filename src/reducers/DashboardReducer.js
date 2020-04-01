@@ -1,4 +1,4 @@
-import {Dashboard} from '../actions/types';
+import {DASHBOARD} from '../actions/types';
 
 const INITIAL_STATE = {};
 
@@ -6,8 +6,8 @@ const INITIAL_STATE = {};
 export default(state=INITIAL_STATE,action)=>{
 	switch(action.type)
 	{
-		case Dashboard:
-			return action.payload;
+		case DASHBOARD:
+			return {...state,data:action.payload};
 		default:
 			return state;
 	}
