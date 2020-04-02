@@ -1,4 +1,12 @@
-import { LOCATION_CHANGED , MEETING_CHANGED, NOTE_CHANGED,DATETIME_CHANGED,LOAD_VALUES,UPDATE_SUCCESS} from '../actions/types';
+import { LOCATION_CHANGED , 
+        MEETING_CHANGED,
+        NOTE_CHANGED,
+        DATETIME_CHANGED,
+        LOAD_VALUES,
+        UPDATE_SUCCESS,
+        INSERT_SUCCESS,
+        DELETE_SUCCESS,
+        CREATE_NOTE} from '../actions/types';
 
 const INITIAL_STATE = {location:"2",meeting:'',datetime:'',note:"",note_id:""};
 
@@ -21,6 +29,14 @@ export default (state = INITIAL_STATE, action) => {
             return {...state,...action.payload}
         case UPDATE_SUCCESS:
             return{...state}
+        case INSERT_SUCCESS:
+            return{...state}
+        case DELETE_SUCCESS:
+        console.log('in delete')
+            return{...state}
+        case CREATE_NOTE:
+            console.log('creates new state')
+            return INITIAL_STATE
 
         default:
             return state;

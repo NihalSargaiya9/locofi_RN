@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import * as actions from '../actions'
 
 import {CardSection,Card,TextArea,Button} from './common/';
+
 import DateTimePicker from './common/DateTimePickerRX';
 
 
-class Note extends Component{
+class CreateNotes extends Component{
     
     onLocationChange(value){
         console.log('here')
@@ -25,17 +26,15 @@ class Note extends Component{
         console.log('meeeting')
         this.props.noteChanged(text);
     }
-    updateDetails()
-    {
-        const {location,meeting,note,datetime,sno,note_id}=this.props;
-        this.props.updateDetails(location,meeting,note,datetime,sno,note_id)
-    }
+    // ===============
 
-    deleteNote()
-    {
-        const {note_id,user}=this.props;
-        this.props.deleteNote(note_id,user)
+    insertDetails()
+    { console.log('insertdetails')
+        const {location,meeting,note,datetime,user}=this.props;
+        this.props.insertDetails(location,meeting,note,datetime,user)
     }
+    // ===============
+
     constructor(props){
         super(props);
            this.state={
@@ -50,16 +49,14 @@ class Note extends Component{
    
        }
 
-
-           state={ email: '', password: ''};
-
-           onClickListener = (viewId) => {
-         Alert.alert("Alert", "Button pressed "+viewId);
-       }
-
     componentWillUnmount()
     {
         this.props.listApointments();
+    }
+
+    componentDidMount()
+    {   console.log(this.props.user);
+        this.props.createNote();
     }
      
     render()
@@ -67,12 +64,10 @@ class Note extends Component{
         console.log(this.props)
 
         this.props.navigation.setOptions({
+                    // <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}} textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
             headerRight: () => (
                 <View style={{flexDirection:"row",width:150}}>
-                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
-                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}}
-                            onPress={this.deleteNote.bind(this)}
-                            textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
+                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.insertDetails.bind(this)}>Create</Button>
                 </View>
       ),
             headerTitle: props => <TextInput style={{fontSize:16}} placeholder="Meeting With"
@@ -116,9 +111,10 @@ class Note extends Component{
         }
     }
 const mapStateToProps = state => {
-    const { location,meeting,note,datetime,sno,note_id } = state.note;
-    return {  location,meeting,note,datetime,sno,note_id };
+    const { location,meeting,note,datetime } = state.note;
+    const { user } = state.auth;
+    return {  location,meeting,note,datetime,user };
 };
 
-export default connect(mapStateToProps,actions)(Note);
+export default connect(mapStateToProps,actions)(CreateNotes);
 // export default Note;

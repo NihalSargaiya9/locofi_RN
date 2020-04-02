@@ -25,6 +25,7 @@ import {Button} from './common/'
 
 
 import Tile from './Tile';
+import CreateNotes from './CreateNotes';
 
 class HomeScreen extends Component {
 
@@ -91,7 +92,11 @@ class HomeScreen extends Component {
 
     }
 
+    renderNotes(){
+      this.props.navigation.navigate("CreateNotes");
+    }
     render()
+      // return <CreateNotes navigatin = {navigation}/>
     {
         return(
             <View style={{flex:1}}>
@@ -99,7 +104,9 @@ class HomeScreen extends Component {
             {this.showList()}
 
             <Button onPress={()=>LocalNotification("IT PARK","MR. Gates")}>show noti</Button>
-            <Button buttonStyle={{borderRadius:100,backgroundColor:"#444",width:60,right:20,position:'absolute',bottom:30}} textStyle={{fontSize:30,color:"#fff"}}>+</Button>
+            <Button buttonStyle={{borderRadius:100,backgroundColor:"#444",width:60,right:20,position:'absolute',bottom:30}}
+                    textStyle={{fontSize:30,color:"#fff"}}
+                    onPress={this.renderNotes.bind(this)}>+</Button>
             </View>
         )
     } 

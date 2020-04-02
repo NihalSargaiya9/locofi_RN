@@ -11,6 +11,7 @@ import reducers from './reducers';
 
 import HomeScreen from './components/HomeScreen';
 import Note from './components/Note';
+import CreateNotes from './components/CreateNotes';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/WelcomeScreen';
 
@@ -22,7 +23,7 @@ function App() {
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
 
-		<Stack.Navigator initialRouteName="Home"		>
+		<Stack.Navigator initialRouteName="Login"		>
 			<Stack.Screen name="Home" component={HomeScreen} />
 			<Stack.Screen name="Login" component={LoginForm} 
 			 screenOptions={{
@@ -35,6 +36,9 @@ function App() {
 			  }}
 			/>
 			<Stack.Screen name="Note" component={Note}
+			options={({ navigation,route }) => ({ title: "NOTE" })}
+			 />
+			 <Stack.Screen name="CreateNotes" component={CreateNotes}
 			options={({ navigation,route }) => ({ title: "NOTE" })}
 			 />		
 		</Stack.Navigator>

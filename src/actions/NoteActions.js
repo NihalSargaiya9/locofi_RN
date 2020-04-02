@@ -1,7 +1,25 @@
-import { LOCATION_CHANGED, MEETING_CHANGED,BASE,DASHBOARD ,NOTE_CHANGED,DATETIME_CHANGED,LOAD_VALUES,UPDATE_SUCCESS} from './types';
+import { LOCATION_CHANGED,
+		 MEETING_CHANGED,
+		 BASE,
+		 DASHBOARD ,
+		 NOTE_CHANGED,
+		 DATETIME_CHANGED,
+		 LOAD_VALUES,
+		 UPDATE_SUCCESS,
+		 INSERT_SUCCESS,
+		 CREATE_NOTE,
+		 DELETE_SUCCESS} from './types';
+
 
 import {getNav} from '../components/navigator';
 import axios from 'axios';
+import Moment from 'moment';
+
+export const createNote= ()=>{
+	return {
+		type:CREATE_NOTE
+	};
+}
 
 
 export const locationChanged = (value) => {
@@ -25,6 +43,51 @@ export const noteChanged = (text) =>{
 		type: NOTE_CHANGED,
 		payload: text
 	}
+};
+
+export const insertDetails = (location,meeting,note,datetime,user) =>{
+	// value['s_no'],value['content'],value['geo_id'],value['meeting_with'],value['time']
+	const navigation = getNav();
+	
+	return(dispatch)=>{
+		parameters = {
+			e_id:user,
+			content:note,
+			geo_id:location,
+			meeting_with:meeting,
+			time: Moment('2020-04-02T19:10:04.987Z')
+		}
+			console.log(location,meeting,note,datetime,user)
+	axios.get(BASE+'insertAppointment',{params:parameters}).then((data)=>{
+		console.log(data)
+			dispatch({
+			type: INSERT_SUCCESS,
+		})
+		navigation.navigate("Home")
+	}).catch((err)=>{console.log(err)});
+}
+
+};
+
+export const deleteNote = (note_id,user) =>{
+	// value['s_no'],value['content'],value['geo_id'],value['meeting_with'],value['time']
+	const navigation = getNav();
+	
+	return(dispatch)=>{
+		parameters = {
+			sno:note_id,
+			e_id:user
+		}
+			console.log(sno,user)
+	axios.get(BASE+'deleteNotes',{params:parameters}).then((data)=>{
+		console.log(data)
+			dispatch({
+			type: DELETE_SUCCESS,
+		})
+		navigation.navigate("Home")
+	}).catch((err)=>{console.log(err)});
+}
+
 };
 
 

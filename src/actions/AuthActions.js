@@ -25,9 +25,9 @@ export const loginUser=({email,password},navigation)=>
 		console.log("iam here in login user")
 		
 		axios.get(BASE+'login',{params:{email:email,password:password}})
-			.then( user=>{ user.data
-						console.log(user.data)
-						if (user.data){loginUserSuccess(dispatch,user,navigation)}
+			.then( user=>{ user=user.data
+						console.log(user)
+						if (user){loginUserSuccess(dispatch,user,navigation)}
 							else{loginUserFail(dispatch)}})
 					
 				.catch(()=> loginUserFail(dispatch));
@@ -72,7 +72,7 @@ export const logoutUser =()=>
 
 const loginUserSuccess=(dispatch,user,navigation)=>
 {
-	console.log("CLICKED",user.data);
+	console.log("CLICKED",user);
 	dispatch({
 		type:LOGIN_USER_SUCCESS,
 		payload:user

@@ -25,13 +25,17 @@ class App extends Component{
    {
     console.log("I am from date ",this.props.datetime)
 
+   // const setDate = this.props.datetime;
+   // return setDate;
    }
+
   state = {
     show:false,
     mode:"date",
-    date:new Date(this.props.datetime),
+    date:new Date(),
     clicks:0
   }
+  
   onChange=(event,selectedDate)=>
   {
 

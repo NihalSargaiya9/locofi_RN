@@ -18,7 +18,7 @@ export const NOTE_CHANGED = 'note_changed';
 export const DATETIME_CHANGED = 'datetime_changed';
 export const LOAD_VALUES = 'load_values';
 export const UPDATE_SUCCESS = 'update_success';
-
-
-
+export const CREATE_NOTE ='create_note';
+export const INSERT_SUCCESS = 'insert_success';
+export const DELETE_SUCCESS = 'delete_success';
 export const BASE = "https://locofi.pythonanywhere.com/"
