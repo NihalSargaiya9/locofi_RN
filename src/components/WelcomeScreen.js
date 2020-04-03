@@ -55,7 +55,14 @@ constructor(props){
 	
 		return(
 	    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-	      <Text style={{ fontSize: 30 }}>LOGO</Text>
+
+					<Image style={{ 
+						   flex: 1,
+						    resizeMode: 'contain',
+						    aspectRatio: 0.18, 
+												}}
+								// source={{uri: "https://img.icons8.com/offices/80/000000/worldwide-location.png" }} />
+							source={require('./../images/Logo.png') } />
 	    </View>
 
 			);

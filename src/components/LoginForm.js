@@ -126,71 +126,75 @@ class LoginForm extends Component {
 		// this.getGeoLocation();
 		    this.props.navigation.setOptions({headerShown:false,});
 		return(
+			<View style={styles.container}>
+			<ScrollView contentContainerStyling={{ alignItems:'center'}}>
+			<View style={{background:"green"}}> 
+		<View style={ styles.container ,{backgroundColor:""}}>
+		
+			<View style={ styles.logoStyle }>
 
-			<ScrollView contentContainerStyling={{ alignItems:'center',
-												   justifyContent:'center'}}>
-			<View style={ styles.container }>
-			
-				<View style={ styles.logoStyle }>
+				<Image style={{ 
+							}}
+							// source={{uri: "https://img.icons8.com/offices/80/000000/worldwide-location.png" }} />
+						source={require('./../images/Logo1.png') } />
 
-					<Image style={{ width:100,
-									height:100,
-									marginTop:200
-								}}
-								// source={{uri: "https://img.icons8.com/offices/80/000000/worldwide-location.png" }} />
-							source={require('./../images/Logo.png') } />
-
-				</View>
-
-				<View style={styles.cardStyle}>
-				
-					<CardSection style={styles.cardSectionStyle}>
-						<Input 
-							source = {require('./../images/email_blue.png')}
-							// imageUrl ="https://img.icons8.com/ultraviolet/40/000000/filled-message.png"
-							placeholder="Email" 
-							style={styles.inputContainerStyle}
-							onChangeText={this.onEmailChange.bind(this)}
-							value={this.props.email}
-							/>
-					</CardSection>
-
-					<CardSection style={styles.cardSectionStyle}>
-						<Input 
-							secureTextEntry
-							source = {require('./../images/key_blue.png')}
-							placeholder="password"
-							style={styles.inputContainerStyle}
-							onChangeText={ this.onPasswordChange.bind(this)}
-							value={this.props.password}
-							/>
-					</CardSection>
-
-						<Button buttonStyle={styles.buttonContainerStyle.buttonStyle} textStyle={styles.buttonContainerStyle.textStyle} 
-						onPress={this.onButtonPress.bind(this)}>
-						Log In
-					 	</Button>
-					 	{this.renderError()}
-						
-
-				</View>
-					
 			</View>
-			</ScrollView>
+
+			<View style={styles.cardStyle}>
+			
+				<CardSection style={styles.cardSectionStyle}>
+					<Input 
+						source = {require('./../images/email_blue.png')}
+						// imageUrl ="https://img.icons8.com/ultraviolet/40/000000/filled-message.png"
+						placeholder="Email" 
+						style={styles.inputContainerStyle}
+						onChangeText={this.onEmailChange.bind(this)}
+						value={this.props.email}
+						/>
+				</CardSection>
+
+				<CardSection style={styles.cardSectionStyle}>
+					<Input 
+						secureTextEntry
+						source = {require('./../images/key_blue.png')}
+						placeholder="password"
+						style={styles.inputContainerStyle}
+						onChangeText={ this.onPasswordChange.bind(this)}
+						value={this.props.password}
+						/>
+				</CardSection>
+
+					<Button buttonStyle={styles.buttonContainerStyle.buttonStyle} textStyle={styles.buttonContainerStyle.textStyle} 
+					onPress={this.onButtonPress.bind(this)}>
+					Log In
+				 	</Button>
+				 	{this.renderError()}
+					
+
+			</View>
+				
+		</View>
+		</View>
+		</ScrollView>
+		</View>
 
 
-			);
-	}
+		);
+}
 }
 
 const styles = {
-	container: {
+container: {
 		backgroundColor: '#E8EAF6',
-		height:Dimensions.get('window').height    
+		flex:1,
+		juntifyContent:'center',
+		alignItems:'center',
+		flexDirection:"row"
+		// height:Dimensions.get('window').height    
   },
 
 	logoStyle:{
-		paddingBottom:70,
+		paddingBottom:30,
 		juntifyContent:'center',
 		alignItems:'center'
 		},
@@ -217,7 +221,7 @@ const styles = {
 		    borderBottomWidth: 1,
 		    width:300,
 		    height:55,
-		    marginBottom:20,
+		    // marginBottom:20,
 		    flexDirection: 'row',
 		    alignItems:'center'
 				}
@@ -240,8 +244,7 @@ const styles = {
 	cardStyle:{	
 	alignItems:'center',
 	justifyContent:'center',
-	marginBottom: 100,
-	marginTop:50
+	// marginBottom: 80,
 	},
 
 	buttonContainerStyle:{
@@ -259,7 +262,7 @@ const styles = {
 			paddingTop:10,
 	    	justifyContent: 'center',
 	    	alignItems: 'center',
-	    	marginBottom:20,
+	    	// marginBottom:20,
 	    	marginTop:5,
 	    	width:300,
 			borderColor:'transparent',
