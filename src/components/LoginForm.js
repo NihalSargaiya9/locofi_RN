@@ -9,6 +9,7 @@ import { Text, Dimensions,View, Alert, Image, ScrollView,PermissionsAndroid} fro
 import { Card, CardSection, Input ,Button, Spinner } from './common';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
+// import Logo from '../images/Logo.png';
 
 
 class LoginForm extends Component {
@@ -121,6 +122,7 @@ class LoginForm extends Component {
 			// });
 		}
 	render(){
+						 // <Text style={styles.welcomeTextStyle} >Locofi</Text>
 		// this.getGeoLocation();
 		    this.props.navigation.setOptions({headerShown:false,});
 		return(
@@ -135,16 +137,17 @@ class LoginForm extends Component {
 									height:100,
 									marginTop:200
 								}}
-								source={{uri: "https://img.icons8.com/offices/80/000000/worldwide-location.png" }} />
+								// source={{uri: "https://img.icons8.com/offices/80/000000/worldwide-location.png" }} />
+							source={require('./../images/Logo.png') } />
 
-						 <Text style={styles.welcomeTextStyle} >Welcome</Text>
 				</View>
 
 				<View style={styles.cardStyle}>
 				
 					<CardSection style={styles.cardSectionStyle}>
 						<Input 
-							imageUrl ="https://img.icons8.com/ultraviolet/40/000000/filled-message.png"
+							source = {require('./../images/email_blue.png')}
+							// imageUrl ="https://img.icons8.com/ultraviolet/40/000000/filled-message.png"
 							placeholder="Email" 
 							style={styles.inputContainerStyle}
 							onChangeText={this.onEmailChange.bind(this)}
@@ -155,7 +158,7 @@ class LoginForm extends Component {
 					<CardSection style={styles.cardSectionStyle}>
 						<Input 
 							secureTextEntry
-							imageUrl = "https://img.icons8.com/ultraviolet/40/000000/key.png"
+							source = {require('./../images/key_blue.png')}
 							placeholder="password"
 							style={styles.inputContainerStyle}
 							onChangeText={ this.onPasswordChange.bind(this)}
@@ -182,7 +185,7 @@ class LoginForm extends Component {
 
 const styles = {
 	container: {
-		backgroundColor: '#E1F5FE',
+		backgroundColor: '#E8EAF6',
 		height:Dimensions.get('window').height    
   },
 
@@ -195,7 +198,7 @@ const styles = {
 	welcomeTextStyle: {
 		fontSize:30,
 		paddingTop:5,
-		color:'#546E7A'
+		color:'#283593'
   },
 
  	inputContainerStyle:{
@@ -238,6 +241,7 @@ const styles = {
 	alignItems:'center',
 	justifyContent:'center',
 	marginBottom: 100,
+	marginTop:50
 	},
 
 	buttonContainerStyle:{
@@ -259,7 +263,7 @@ const styles = {
 	    	marginTop:5,
 	    	width:300,
 			borderColor:'transparent',
-	    	backgroundColor: "#64B5F6",
+	    	backgroundColor: "#283593",
 	    	borderRadius:30,
   }
 }

@@ -24,7 +24,14 @@ function App() {
 		<NavigationContainer>
 
 		<Stack.Navigator initialRouteName="Home"		>
-			<Stack.Screen name="Home" component={HomeScreen} />
+			<Stack.Screen name="Home" component={HomeScreen}  
+				options={{headerStyle:{
+										backgroundColor:'#283593'
+									},
+							headerTintColor: '#fff',
+					        headerTitleStyle: {fontWeight: 'bold',marginLeft:'auto'
+          }}
+				}/>
 			<Stack.Screen name="Login" component={LoginForm} 
 			 screenOptions={{
 				headerMode:'none'

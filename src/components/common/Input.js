@@ -1,11 +1,11 @@
 import React from 'react';
 import {TextInput,Image,View,Text} from 'react-native';
 
-const Input = ({value,onChangeText,placeholder,secureTextEntry, imageUrl, style})=>{
+const Input = ({value,onChangeText,placeholder,secureTextEntry, source, style})=>{
 	// const {labelStyle,containerStyle,textStyle} =styles;
 	return (
 		<View style={[ styles.containerStyle , style.containerStyle ]}>	
-		<Image style={{width:30,height:30, marginLeft:14,marginBottom:5}} source={{uri: imageUrl}} />
+		<Image style={{width:30,height:30, marginLeft:14,marginBottom:5}} source={source} />
 			
 			<TextInput placeholder={placeholder} 
 					   secureTextEntry={secureTextEntry} 

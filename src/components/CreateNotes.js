@@ -76,9 +76,9 @@ class CreateNotes extends Component{
         
                                 // console.log(this.props);
         return(
-        <View>
+        <View style={{backgroundColor:'#ffffff',flex:1}}>
             <CardSection>
-               <Card style={{padding:0,margin:0,height:50,flexDirection:"row"}}>
+               <Card style={{padding:0,margin:0,height:50,flexDirection:"row",backgroundColor:'#E8EAF6'}}>
                     <Picker
                         selectedValue={""+this.props.location}
                         style={[{height:50,width:100},{width:80,flex:2}]}
@@ -91,8 +91,8 @@ class CreateNotes extends Component{
 
                     <DateTimePicker onButtonPress={this.onDateTimeChange.bind(this)} style={{flex:2}}/>
                 </Card>
-                <Card>
-                 <TextArea style={{backgroundColor:"#f6f8fa",padding:2}}
+                <Card style={{backgroundColor:'#E8EAF6'}}>
+                 <TextArea style={{backgroundColor:"#ffffff",padding:12,borderColor:'transparent'}}
                             value={this.props.note}
                             onChangeText={this.onNoteChange.bind(this)}/>
                 </Card>
@@ -108,7 +108,8 @@ class CreateNotes extends Component{
             backgroundColor:"#4bb543",
             marginRight:10,
             paddingRight:0,
-            flex:1
+            flex:1,
+            borderColor:'transparent'
         }
     }
 const mapStateToProps = state => {

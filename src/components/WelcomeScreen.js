@@ -46,7 +46,7 @@ constructor(props){
        		// body...
 
        		that.props.navigation.navigate("Login");
-       	},2000)
+       	},3000)
      }
 
 				

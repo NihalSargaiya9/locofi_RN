@@ -70,7 +70,7 @@ class Note extends Component{
             headerRight: () => (
                 <View style={{flexDirection:"row",width:150}}>
                     <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
-                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}}
+                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red",borderColor:'transparent'}}
                             onPress={this.deleteNote.bind(this)}
                             textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
                 </View>
@@ -82,9 +82,9 @@ class Note extends Component{
         
                                 // console.log(this.props);
         return(
-        <View>
-            <CardSection>
-               <Card style={{padding:0,margin:0,height:50,flexDirection:"row"}}>
+        <View style={{backgroundColor:'#ffffff',flex:1}}>
+            <CardSection style={{backgroundColor:'#ffffff'}}>
+               <Card style={{padding:0,margin:0,height:50,flexDirection:"row",backgroundColor:'#E8EAF6'}}>
                     <Picker
                         selectedValue={""+this.props.location}
                         style={[{height:50,width:100},{width:80,flex:2}]}
@@ -97,8 +97,8 @@ class Note extends Component{
 
                     <DateTimePicker onButtonPress={this.onDateTimeChange.bind(this)} style={{flex:2}}/>
                 </Card>
-                <Card>
-                 <TextArea style={{backgroundColor:"#f6f8fa",padding:2}}
+                <Card style={{backgroundColor:'#E8EAF6'}}>
+                 <TextArea style={{backgroundColor:"#ffffff",padding:12,borderColor:'transparent'}}
                             value={this.props.note}
                             onChangeText={this.onNoteChange.bind(this)}/>
                 </Card>
@@ -112,7 +112,8 @@ class Note extends Component{
     const style={
         buttonStyle:{
             backgroundColor:"#4bb543",
-            width:60
+            width:60,
+            borderColor:'transparent'
         }
     }
 const mapStateToProps = state => {

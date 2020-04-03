@@ -132,14 +132,14 @@ class HomeScreen extends Component {
 
       }
         return(
-            <View style={{flex:1}}>
+            <View style={{backgroundColor:'#FFFFFF',flex:1}}>
             {this.showList()}
 
-            <Button onPress={this.checkLocation.bind(this)}>show noti</Button>
-            <Button buttonStyle={{borderRadius:100,backgroundColor:"#444",width:60,right:20,position:'absolute',bottom:30}}
+            <Button buttonStyle={{borderRadius:100,borderColor:'transparent',backgroundColor:"#283593",width:60,right:20,position:'absolute',bottom:30}}
                     textStyle={{fontSize:30,color:"#fff"}}
                     onPress={this.renderNotes.bind(this)}>+</Button>
             </View>
+            // <Button onPress={this.checkLocation.bind(this)}>show noti</Button>
         )
     } 
 }

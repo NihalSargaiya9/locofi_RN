@@ -37,7 +37,7 @@ class  Tile extends Component{
                      onLongPress={()=>{}}
                     delayLongPress={100}
                     >
-                            <Card style={{flexDirection:'row'}} >
+                            <Card style={{flexDirection:'row',backgroundColor:'#E8EAF6',borderColor:'transparent',borderWidth:2,borderBottomWidth:2}} >
                                 <View style={{flex:7}}>
                                     <Text style={styles.appointmentTime}>{Moment(this.props.appointment.item[6]).format("HH:MM")}<Text style={{fontSize:16}}> {Moment(this.props.appointment.item[6]).format("A")}</Text></Text>
                                     <Text style={styles.location}><Image source={require('./../images/pin.png')}  style={{width:12,height:12,marginRight:5,margin:0,padding:0}} /> {this.props.appointment.item[3]}</Text>
