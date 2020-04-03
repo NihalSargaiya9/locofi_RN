@@ -23,7 +23,7 @@ function App() {
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
 
-		<Stack.Navigator initialRouteName="Login"		>
+		<Stack.Navigator initialRouteName="Home"		>
 			<Stack.Screen name="Home" component={HomeScreen} />
 			<Stack.Screen name="Login" component={LoginForm} 
 			 screenOptions={{
