@@ -20,7 +20,7 @@ class CreateNotes extends Component{
     }
     onDateTimeChange(text){
         console.log('Date Changed')
-        this.props.dateTimeChanged("hello")
+        this.props.dateTimeChanged(new Date())
     }
     onNoteChange(text){
         console.log('meeeting')
@@ -61,12 +61,11 @@ class CreateNotes extends Component{
      
     render()
     {
-        console.log(this.props)
 
         this.props.navigation.setOptions({
                     // <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}} textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
             headerRight: () => (
-                <View style={{flexDirection:"row",width:150}}>
+                <View style={{flexDirection:"row",width:150,flex:1}}>
                     <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.insertDetails.bind(this)}>Create</Button>
                 </View>
       ),
@@ -107,7 +106,9 @@ class CreateNotes extends Component{
     const style={
         buttonStyle:{
             backgroundColor:"#4bb543",
-            width:60
+            marginRight:10,
+            paddingRight:0,
+            flex:1
         }
     }
 const mapStateToProps = state => {

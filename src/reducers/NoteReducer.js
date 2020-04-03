@@ -8,7 +8,7 @@ import { LOCATION_CHANGED ,
         DELETE_SUCCESS,
         CREATE_NOTE} from '../actions/types';
 
-const INITIAL_STATE = {location:"2",meeting:'',datetime:'',note:"",note_id:""};
+const INITIAL_STATE = {location:"2",meeting:'',datetime:new Date(),note:"",note_id:""};
 
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {

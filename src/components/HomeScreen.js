@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import {Text, View,FlatList} from 'react-native';
+import {Text, View,FlatList,PermissionsAndroid,Alert} from 'react-native';
 import {connect} from 'react-redux';
-import {listApointments} from '../actions';
+import {listApointments,getLocation} from '../actions';
 import _ from 'lodash';
+import Geolocation from '@react-native-community/geolocation';
+
 
 import {NavigationEvents} from '@react-navigation/native';
 import BackgroundTask from 'react-native-background-task'
@@ -14,13 +16,13 @@ import { LocalNotification } from '../services/LocalPushController'
 import {setNav} from './navigator'
 import {Button} from './common/'
 
-  BackgroundTask.define(() => {
+  BackgroundTask.define( () => {
         console.log('Hello from a background task slos')
-    this._interval = setInterval(()=>{
         LocalNotification("IT PARK","MR. Gates")
-        console.log('Hello from a background task')
+    // this._interval = setInterval(()=>{
+    //     console.log('Hello from a background task')
+    //   },2000)
         BackgroundTask.finish()
-      },2000)
   })
 
 
@@ -32,6 +34,8 @@ class HomeScreen extends Component {
     constructor(props){
         super(props);
            this.state={
+                    lastPosition:{lat:0,long:0},
+                    initialPosition:{lat:0,long:0},
    
             };
          }
@@ -43,19 +47,31 @@ class HomeScreen extends Component {
    
      //   }
 
-    componentDidMount()
+    checkLocation()
     {
-        this.props.listApointments();
-          BackgroundTask.schedule({
+      if(PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)){
 
-                period:900,
-               });
-            this.checkStatus();
-            setNav(this.props.navigation);
+        Geolocation.getCurrentPosition(
+          position => {
+            const initialPosition = position;
+        this.props.getLocation(initialPosition.coords.latitude,initialPosition.coords.longitude);
+        // this.props.getLocation(22.685941,75.872163);
+        this.setState({initialPosition:{lat:initialPosition.coords.latitude,long:initialPosition.coords.longitude}})
+        },
+        error => Alert.alert('Error', JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000},
+        );
+        this.watchID = Geolocation.watchPosition(position => {
+          const lastPosition =position;
+          if(lastPosition.coords.latitude != this.state.lastPosition.lat && lastPosition.coords.longitude != this.state.lastPosition.long)
+              {
+          this.setState({lastPosition:{lat:lastPosition.coords.latitude,long:lastPosition.coords.longitude}});
+        this.props.getLocation(lastPosition.coords.latitude,lastPosition.coords.longitude);
+        }
+      });
+      }
 
     }
-
-
        async checkStatus() {
         const status = await BackgroundTask.statusAsync()
         console.log(status.available)
@@ -84,7 +100,7 @@ class HomeScreen extends Component {
             <FlatList 
                 data={this.props.appointments}
                 renderItem={this.renderListItem}
-                // keyExtractor={employee=>e.uid}
+                keyExtractor={appointment=>{parseInt(appointment[0])}}
 
              />
             )
@@ -92,18 +108,34 @@ class HomeScreen extends Component {
 
     }
 
+    componentDidMount()
+    {
+        this.props.listApointments();
+
+            BackgroundTask.schedule()
+            // this.checkStatus();
+            setNav(this.props.navigation);
+            this.checkLocation();
+
+    }
+
+
     renderNotes(){
       this.props.navigation.navigate("CreateNotes");
     }
     render()
       // return <CreateNotes navigatin = {navigation}/>
     {
+      if(this.props.notification!=-1)
+      {
+        LocalNotification("IT PARK","MR. Gates")
+
+      }
         return(
             <View style={{flex:1}}>
-
             {this.showList()}
 
-            <Button onPress={()=>LocalNotification("IT PARK","MR. Gates")}>show noti</Button>
+            <Button onPress={this.checkLocation.bind(this)}>show noti</Button>
             <Button buttonStyle={{borderRadius:100,backgroundColor:"#444",width:60,right:20,position:'absolute',bottom:30}}
                     textStyle={{fontSize:30,color:"#fff"}}
                     onPress={this.renderNotes.bind(this)}>+</Button>
@@ -113,9 +145,9 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state =>{
-    const appointments = state.HomeScreen.data;
+    const {appointments,Location,notification} = state.HomeScreen;
 
-    return {appointments};
+    return {appointments,Location,notification};
 }
 
-export default connect(mapStateToProps,{listApointments})(HomeScreen);
+export default connect(mapStateToProps,{listApointments,getLocation })(HomeScreen);

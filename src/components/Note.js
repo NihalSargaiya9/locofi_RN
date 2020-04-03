@@ -34,7 +34,7 @@ class Note extends Component{
     deleteNote()
     {
         const {note_id,user}=this.props;
-        this.props.deleteNote(note_id,user)
+        this.props.deleteNote(note_id,1)
     }
     constructor(props){
         super(props);
@@ -116,8 +116,8 @@ class Note extends Component{
         }
     }
 const mapStateToProps = state => {
-    const { location,meeting,note,datetime,sno,note_id } = state.note;
-    return {  location,meeting,note,datetime,sno,note_id };
+    const { location,meeting,note,datetime,sno,note_id,user } = state.note;
+    return {  location,meeting,note,datetime,sno,note_id,user };
 };
 
 export default connect(mapStateToProps,actions)(Note);

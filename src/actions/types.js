@@ -11,6 +11,9 @@ export const LOGOUT_USER = 'logout_user';
 
 export const EMPLOYEE_UPDATE = 'employee_update';
 export const DASHBOARD = "show_Dashboard";
+export const LOCATION = "location";
+export const NOTIFY = "notify";
+
 
 export const LOCATION_CHANGED ='location_changed';
 export const MEETING_CHANGED = 'meeting_changed';

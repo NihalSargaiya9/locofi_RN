@@ -47,17 +47,17 @@ export const noteChanged = (text) =>{
 
 export const insertDetails = (location,meeting,note,datetime,user) =>{
 	// value['s_no'],value['content'],value['geo_id'],value['meeting_with'],value['time']
+	console.log("check here : " ,location,meeting,note,datetime,user)
 	const navigation = getNav();
 	
 	return(dispatch)=>{
 		parameters = {
-			e_id:user,
+			e_id:1,
 			content:note,
 			geo_id:location,
 			meeting_with:meeting,
-			time: Moment('2020-04-02T19:10:04.987Z')
+			time:datetime
 		}
-			console.log(location,meeting,note,datetime,user)
 	axios.get(BASE+'insertAppointment',{params:parameters}).then((data)=>{
 		console.log(data)
 			dispatch({
@@ -72,13 +72,12 @@ export const insertDetails = (location,meeting,note,datetime,user) =>{
 export const deleteNote = (note_id,user) =>{
 	// value['s_no'],value['content'],value['geo_id'],value['meeting_with'],value['time']
 	const navigation = getNav();
-	
+	console.log(note_id,user," hello world")
 	return(dispatch)=>{
 		parameters = {
 			sno:note_id,
 			e_id:user
 		}
-			console.log(sno,user)
 	axios.get(BASE+'deleteNotes',{params:parameters}).then((data)=>{
 		console.log(data)
 			dispatch({
