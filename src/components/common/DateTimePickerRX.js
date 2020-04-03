@@ -74,7 +74,7 @@ render(){
           onChange={this.onChange}
         />
       }
-      <Button onPress={this.onButtonPressLocal.bind(this)} buttonStyle={{flex:1,backgroundColor:'#9FA8DA',borderColor:'283593'}} textStyle={{fontSize:16,color:'#ECEFF1'}}> {Moment(this.state.date).format('DD/MM  h:m A')} </Button>
+      <Button onPress={this.onButtonPressLocal.bind(this)} buttonStyle={{flex:1,backgroundColor:'#9FA8DA',borderColor:'#ECEFF1'}} textStyle={{fontSize:16,color:'#ECEFF1'}}> {Moment(this.state.date).format('DD/MM  h:m A')} </Button>
     <View>
     </View>
     </View>
