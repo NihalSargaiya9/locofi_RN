@@ -65,12 +65,12 @@ class Note extends Component{
     render()
     {
         console.log(this.props)
-
+// backgroundColor:"#283593",borderColor:'#9FA8DA'
         this.props.navigation.setOptions({
             headerRight: () => (
-                <View style={{flexDirection:"row",width:150}}>
-                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
-                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red",borderColor:'transparent'}}
+                <View style={{flexDirection:"row",width:150,flex:1}}>
+                    <Button buttonStyle={style.buttonStyle,{flex:1,borderRadius:5,backgroundColor:"#9FA8DA",borderColor:'transparent'}} textStyle={{color:"#283593",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
+                    <Button buttonStyle={style.buttonStyle,{flex:1,marginLeft:10,borderRadius:5,backgroundColor:"#283593",borderColor:'#9FA8DA'}}
                             onPress={this.deleteNote.bind(this)}
                             textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
                 </View>

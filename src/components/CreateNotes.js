@@ -66,7 +66,7 @@ class CreateNotes extends Component{
                     // <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red"}} textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
             headerRight: () => (
                 <View style={{flexDirection:"row",width:150,flex:1}}>
-                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.insertDetails.bind(this)}>Create</Button>
+                    <Button buttonStyle={style.buttonStyle,{flex:1,borderRadius:5,backgroundColor:"#9FA8DA",borderColor:'transparent'}} textStyle={{color:"#283593",fontWeight:'800' } }  onPress={this.insertDetails.bind(this)}>Create</Button>
                 </View>
       ),
             headerTitle: props => <TextInput style={{fontSize:16,color:'white'}} placeholderTextColor="white" placeholder="Meeting With"

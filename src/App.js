@@ -23,7 +23,7 @@ function App() {
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
 
-		<Stack.Navigator initialRouteName="Welcome"		>
+		<Stack.Navigator initialRouteName="Note"		>
 			<Stack.Screen name="Home" component={HomeScreen}  
 				options={{headerStyle:{
 										backgroundColor:'#283593'
