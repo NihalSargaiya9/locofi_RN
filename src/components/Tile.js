@@ -22,7 +22,7 @@ class  Tile extends Component{
         });
        }
 
-
+    
     loadValuesLocal ()
     {
         this.props.loadValues(this.props.appointment.item);
