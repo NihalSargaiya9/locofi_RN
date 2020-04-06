@@ -3,6 +3,7 @@ import {Text,View,StyleSheet,Image,TouchableOpacity} from 'react-native';
 
 import {CardSection, Card} from './common';
 import Moment from 'moment';
+
 import * as actions from '../actions';
 import {connect} from 'react-redux';
 
@@ -28,6 +29,8 @@ class  Tile extends Component{
         // this.setState({color:'red'});
     }
     render(){
+        let date= new Date(this.props.appointment.item[6])
+        date = Moment(date).format("hh:mm A").toString()
         // console.log("from TIle ", this.props.appointment.item)
         return(
             <View>
@@ -39,7 +42,7 @@ class  Tile extends Component{
                     >
                             <Card style={{flexDirection:'row',backgroundColor:'#E8EAF6',borderColor:'transparent',borderWidth:2,borderBottomWidth:2}} >
                                 <View style={{flex:7}}>
-                                    <Text style={styles.appointmentTime}>{Moment(this.props.appointment.item[6]).format("HH:MM")}<Text style={{fontSize:16}}> {Moment(this.props.appointment.item[6]).format("A")}</Text></Text>
+                                    <Text style={styles.appointmentTime}>{date}</Text>
                                     <Text style={styles.location}><Image source={require('./../images/pin.png')}  style={{width:12,height:12,marginRight:5,margin:0,padding:0}} /> {this.props.appointment.item[3]}</Text>
                                 </View>
                                 <View style={{flex:6}}>

@@ -69,8 +69,8 @@ render(){
           value={this.state.date}
           mode={this.state.mode}
           is24Hour={false}
-          timeZoneOffsetInMinutes={0}
           display="default"
+
           onChange={this.onChange}
         />
       }
