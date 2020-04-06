@@ -129,6 +129,7 @@ class HomeScreen extends Component {
 
       }
         return(
+            // <Button onPress={()=>LocalNotification("IT PARK","MR. Gates")}>show noti</Button>
             <View style={{backgroundColor:'#FFFFFF',flex:1}}>
             {this.showList()}
 
@@ -136,7 +137,6 @@ class HomeScreen extends Component {
                     textStyle={{fontSize:30,color:"#fff"}}
                     onPress={this.renderNotes.bind(this)}>+</Button>
             </View>
-            // <Button onPress={this.checkLocation.bind(this)}>show noti</Button>
         )
     } 
 }

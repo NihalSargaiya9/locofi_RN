@@ -65,17 +65,17 @@ class Note extends Component{
     render()
     {
         console.log(this.props)
-
+// backgroundColor:"#283593",borderColor:'#9FA8DA'
         this.props.navigation.setOptions({
             headerRight: () => (
-                <View style={{flexDirection:"row",width:150}}>
-                    <Button buttonStyle={style.buttonStyle} textStyle={{color:"white",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
-                    <Button buttonStyle={style.buttonStyle,{marginLeft:10,backgroundColor:"red",borderColor:'transparent'}}
+                <View style={{flexDirection:"row",width:150,flex:1}}>
+                    <Button buttonStyle={style.buttonStyle,{flex:1,borderRadius:5,backgroundColor:"#9FA8DA",borderColor:'transparent'}} textStyle={{color:"#283593",fontWeight:'800' } }  onPress={this.updateDetails.bind(this)}>Save</Button>
+                    <Button buttonStyle={style.buttonStyle,{flex:1,marginLeft:10,borderRadius:5,backgroundColor:"#283593",borderColor:'#9FA8DA'}}
                             onPress={this.deleteNote.bind(this)}
                             textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
                 </View>
       ),
-            headerTitle: props => <TextInput  placeholderTextColor="white" style={{fontSize:16,color:"#ffffff"}} placeholder="Meeting With"
+            headerTitle: props => <TextInput style={{fontSize:16,color:'white'}} placeholderTextColor="white" placeholder="Meeting With"
                                          value={this.props.meeting}   onChangeText={this.onMeetingChange.bind(this)}/>,
         });
         
@@ -83,7 +83,7 @@ class Note extends Component{
                                 // console.log(this.props);
         return(
         <View style={{backgroundColor:'#E8EAF6',flex:1}}>
-            <CardSection style={{backgroundColor:'#ffffff'}}>
+            <CardSection style={{backgroundColor:'#E8EAF6'}}>
                <Card style={{padding:0,margin:0,height:50,flexDirection:"row",backgroundColor:'#E8EAF6'}}>
                     <Picker
                         selectedValue={""+this.props.location}
