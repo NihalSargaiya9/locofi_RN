@@ -24,6 +24,7 @@ function App() {
 		<NavigationContainer>
 
 		<Stack.Navigator initialRouteName="Welcome"		>
+
 			<Stack.Screen name="Home" component={HomeScreen}  
 				options={{headerStyle:{
 										backgroundColor:'#283593'
@@ -43,12 +44,17 @@ function App() {
 			  }}
 			/>
 			<Stack.Screen name="Note" component={Note}
-			options={({ navigation,route }) => ({ title: "NOTE" }),
-						{headerStyle:{
+			options={{headerStyle:{
 										backgroundColor:'#283593'
-									},headerTintColor: '#fff'}
+									},
+							headerTintColor: '#fff',
+					        headerTitleStyle: {fontWeight: 'bold',marginLeft:'auto'
+          }}
+				}
 
-						}
+
+			// {({ navigation,route }) => ({ title: "NOTE" })}
+
 			 />
 			 <Stack.Screen name="CreateNotes" component={CreateNotes}
 			options={({ navigation,route }) => ({ title: "NOTE" }),{headerStyle:{
