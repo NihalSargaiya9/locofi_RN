@@ -23,7 +23,7 @@ function App() {
 	<Provider store={createStore(reducers,{},applyMiddleware(ReduxThunk))}>
 		<NavigationContainer>
 
-		<Stack.Navigator initialRouteName="Home"		>
+		<Stack.Navigator initialRouteName="Login"		>
 			<Stack.Screen name="Home" component={HomeScreen}  
 				options={{headerStyle:{
 										backgroundColor:'#283593'
@@ -43,7 +43,16 @@ function App() {
 			  }}
 			/>
 			<Stack.Screen name="Note" component={Note}
-			options={({ navigation,route }) => ({ title: "NOTE" })}
+			options={{headerStyle:{
+										backgroundColor:'#283593'
+									},
+							headerTintColor: '#fff',
+					        headerTitleStyle: {fontWeight: 'bold',marginLeft:'auto'
+          }}
+				}
+
+
+			// {({ navigation,route }) => ({ title: "NOTE" })}
 			 />
 			 <Stack.Screen name="CreateNotes" component={CreateNotes}
 			options={({ navigation,route }) => ({ title: "NOTE" })}

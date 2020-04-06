@@ -7,7 +7,6 @@ import Geolocation from '@react-native-community/geolocation';
 
 
 import {NavigationEvents} from '@react-navigation/native';
-import BackgroundTask from 'react-native-background-task'
 
 import { LocalNotification } from '../services/LocalPushController'
 
@@ -16,14 +15,14 @@ import { LocalNotification } from '../services/LocalPushController'
 import {setNav} from './navigator'
 import {Button} from './common/'
 
-  BackgroundTask.define( () => {
-        console.log('Hello from a background task slos')
-        LocalNotification("IT PARK","MR. Gates")
-    // this._interval = setInterval(()=>{
-    //     console.log('Hello from a background task')
-    //   },2000)
-        BackgroundTask.finish()
-  })
+  // BackgroundTask.define( () => {
+  //       console.log('Hello from a background task slos')
+  //       LocalNotification("IT PARK","MR. Gates")
+  //   // this._interval = setInterval(()=>{
+  //   //     console.log('Hello from a background task')
+  //   //   },2000)
+  //       BackgroundTask.finish()
+  // })
 
 
 import Tile from './Tile';
@@ -72,10 +71,10 @@ class HomeScreen extends Component {
       }
 
     }
-       async checkStatus() {
-        const status = await BackgroundTask.statusAsync()
-        console.log(status.available)
-      }
+      //  async checkStatus() {
+      //   const status = await BackgroundTask.statusAsync()
+      //   console.log(status.available)
+      // }
 
 
     renderListItem(appointment,navigation)
@@ -112,8 +111,6 @@ class HomeScreen extends Component {
     {
         this.props.listApointments();
 
-            BackgroundTask.schedule()
-            // this.checkStatus();
             setNav(this.props.navigation);
             this.checkLocation();
 

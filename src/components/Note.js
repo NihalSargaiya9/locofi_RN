@@ -75,14 +75,14 @@ class Note extends Component{
                             textStyle={{color:"white",fontWeight:'800'}}>Delete</Button>
                 </View>
       ),
-            headerTitle: props => <TextInput style={{fontSize:16}} placeholder="Meeting With"
+            headerTitle: props => <TextInput  placeholderTextColor="white" style={{fontSize:16,color:"#ffffff"}} placeholder="Meeting With"
                                          value={this.props.meeting}   onChangeText={this.onMeetingChange.bind(this)}/>,
         });
         
         
                                 // console.log(this.props);
         return(
-        <View style={{backgroundColor:'#ffffff',flex:1}}>
+        <View style={{backgroundColor:'#E8EAF6',flex:1}}>
             <CardSection style={{backgroundColor:'#ffffff'}}>
                <Card style={{padding:0,margin:0,height:50,flexDirection:"row",backgroundColor:'#E8EAF6'}}>
                     <Picker
