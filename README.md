@@ -2,7 +2,7 @@
 </p>
 Location based reminder App. Built with React Native
 <br>
-<img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png" width="190">
+<img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png">
 <p><h2>Introduction</h2>
 Locofi is a mobile application that uses Geofence to notify users  
 <p>
