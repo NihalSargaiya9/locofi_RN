@@ -2,10 +2,12 @@
 </p>
 Location based reminder App. Built with React Native
 <br>
-<img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png">
+
 <h2>Introduction</h2>
-<p>Locofi is a mobile application that helps you to keep up with your daily agendas. Know your tasks and agendas based on your location. This app uses Geofence to make sure that you're alerted of your tasks when you're at your location. 
+<p>Locofi is a mobile application that helps you to keep up with your daily agendas. Know your tasks and agendas based on your location. This app uses Geofence to make sure that you're alerted of your tasks when you're at your location.<br>
+  <img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png">
 </p>
+
 
 
 
