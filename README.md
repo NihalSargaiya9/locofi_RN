@@ -2,5 +2,5 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/Logo.png" width="140">
-  Location based reminder App. Built with React Native.
+ <br> Location based reminder App. Built with React Native.
 </p>
