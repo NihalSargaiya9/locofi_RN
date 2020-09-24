@@ -1,19 +1,23 @@
-# Locofi_RN
-.
-
-|![](/test.jpg) | ![](/test.png)|
-| --- | --- |
-|![](https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png) | Encryption is the process of converting data to an unrecognizable or "encrypted" form.|
-A Location-based reminder App. Build with React Native
+# Locofi App
 # Introduction
+<img align="left" src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png"> Encryption is the process of converting data to an unrecognizable or "encrypted" form.</img>
+<br>
 Locofi is a Mobile Application that helps you to stay organised.It is a Location based reminder that uses Geofence to locate and notify user about their agendas when they reach a specific destination. 
 
-# Features 
-* Simple and user friendly UI.
-* Create,edit and delete Notes with ease.
-* Create your own virtual boundary for any location.
-* Locates your position accurately and notifies about your tasks.
-* Add Time and Date to make your task more accurate.
+## Features 
+
+**1.** Simple and user friendly UI.<br>
+**2.** Create,edit and delete Notes with ease.<br>
+**3.** Create your own virtual boundary for any location.<br>
+**4.** Locates your position accurately and notifies about your tasks.<br>
+**5.** Add Time and Date to make your task more accurate.<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # Installation
 The list of all dependencies are listed explicitly in the project's `package.json` file in the current project/directory.<br/>
@@ -24,9 +28,9 @@ use `npm` to install dependencies.
  `npm install @react-native-community/geolocation --save`<br/>
  
  **Some other dependencies**
- * ![Date-Time-Picker](https://github.com/react-native-community/datetimepicker#is24hour-optional-android-only)
- * ![Axios](https://github.com/axios/axios)
- * ![Redux](https://redux.js.org/introduction/installation)
+ * [Date-Time-Picker](https://github.com/react-native-community/datetimepicker#is24hour-optional-android-only)
+ * [Axios](https://github.com/axios/axios)
+ * [Redux](https://redux.js.org/introduction/installation)
 
 
 # Showcase
