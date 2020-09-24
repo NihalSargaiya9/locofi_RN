@@ -43,4 +43,9 @@ use `npm` to install dependencies.
  ![](https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Time.png)
  ![](https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/request-location-permission.png)
  
+# App In Action
+<p align="center">
+<img align="middle" src="https://github.com/NihalSargaiya9/locofi_RN/blob/master/src/images/screenshots/LOCOFI%20DEMO.gif?raw=true" width="190">
+  </p>
+
  
