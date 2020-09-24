@@ -11,11 +11,14 @@ Location based reminder App. Built with React Native
 <h2>Features</h2>
 <p> 
   <ul>
-  <li>Simple and Interactive UI.</li>
-  <li>Create and Edit Notes.</li>
-  <li>Create your own Virtual boundary that suits your needs.</li>
-  <li>Locates your position accurately and notifies about your tasks.</li>
-  <li>Add Time and Date to make your task more accurate.</li>
+   <li>Simple and Interactive UI.</li>
+   <li>Create and Edit Notes.</li>
+   <li>Create your own Virtual boundary for any location.</li>
+   <li>Locates your position accurately and notifies about your tasks.</li>
+   <li>Add Time and Date to make your task more accurate.</li>
+   <li></li>
+   <li></li>
+    
    </ul>
   
 </p>
