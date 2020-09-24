@@ -1,5 +1,7 @@
 # Image-Encrypter
-Encryption is the process of converting data to an unrecognizable or "encrypted" form.
+|![](/test.jpg) | ![](/test.png)|
+| --- | --- |
+|![](https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png) | Encryption is the process of converting data to an unrecognizable or "encrypted" form.|
 
 
 ## Installation
