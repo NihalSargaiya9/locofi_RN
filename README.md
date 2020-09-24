@@ -1,6 +1,3 @@
-<h1 align="center"> Locofi_RN </h1>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/Logo.png" width="165" height="205">
- <br> Location based reminder App. Built with React Native.
+<p><h1><img src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/Logo.png" width="35" > &nbsp;Locofi_RN&nbsp; </h1>
 </p>
+Location based reminder App. Built with React Native
