@@ -1,6 +1,6 @@
 # Locofi App
 # Introduction
-<img align="left" src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png"> Encryption is the process of converting data to an unrecognizable or "encrypted" form.</img>
+<img align="left" src="https://raw.githubusercontent.com/NihalSargaiya9/locofi_RN/master/src/images/screenshots/Splash.png"></img>
 <br>
 Locofi is a Mobile Application that helps you to stay organised.It is a Location based reminder that uses Geofence to locate and notify user about their agendas when they reach a specific destination. 
 
