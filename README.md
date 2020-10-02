@@ -23,7 +23,7 @@ Locofi is a Mobile Application that helps you to stay organised.It is a Location
 The list of all dependencies are listed explicitly in the project's `package.json` file in the current project/directory.<br/>
 
 use `npm` to install dependencies.
-  e.g. to install ![react-native-geolocation](https://github.com/react-native-community/react-native-geolocation) use: 
+  e.g. to install [react-native-geolocation](https://github.com/react-native-community/react-native-geolocation) use: 
   
  `npm install @react-native-community/geolocation --save`<br/>
  
